@@ -91,7 +91,7 @@
   .display {
     font-family: var(--display);
     font-weight: 350;
-    font-size: clamp(38px, 5.2vw, 68px);
+    font-size: clamp(34px, 4.5vw, 58px);
     line-height: 1.02;
     letter-spacing: -0.03em;
     color: var(--ink);
@@ -522,6 +522,96 @@
   }
   .d-arrow { color: var(--muted-2); margin-top: 8px; }
 
+  /* ─── SEVEN-DAYS BLOCK ─── */
+  .seven-block {
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) 1fr;
+    gap: 56px;
+    align-items: center;
+    padding: 64px 48px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 760px) {
+    .seven-block {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      text-align: left;
+    }
+  }
+  .seven-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0.9;
+  }
+  @media (max-width: 760px) {
+    .seven-num { align-items: flex-start; }
+  }
+  .seven-digit {
+    font-family: var(--display);
+    font-size: clamp(140px, 18vw, 220px);
+    font-weight: 350;
+    letter-spacing: -0.05em;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--ink) 0%, var(--accent-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .seven-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .seven-content { max-width: 560px; }
+  .seven-lead {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.4vw, 26px);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0 0 28px;
+  }
+  .seven-lead strong { font-weight: 480; color: var(--accent-deep); }
+  .seven-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .seven-points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .seven-points li strong { color: var(--ink); font-weight: 600; }
+  .seven-check {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
   .note {
     margin-top: 56px;
     padding: 32px;
@@ -546,6 +636,123 @@
     margin-top: 16px;
     color: var(--accent-deep);
     letter-spacing: -0.02em;
+  }
+
+  /* ─── DINA NOTE WITH PHOTO ─── */
+  .dina-note {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #FAFAF7 0%, var(--accent-soft) 100%);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: var(--shadow-rest);
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) {
+    .dina-note {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 28px;
+    }
+  }
+  .dina-photo {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #F5F2EC 0%, #E8E4DB 100%);
+    aspect-ratio: 6/5;
+    width: 100%;
+    align-self: center;
+    box-shadow: 0 12px 40px rgba(0, 122, 90, 0.15);
+  }
+  .dina-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  .dina-status {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dina-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(0, 168, 126, 0.6);
+    animation: dinaPulse 2s ease-out infinite;
+  }
+  @keyframes dinaPulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 168, 126, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 168, 126, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 168, 126, 0); }
+  }
+  .dina-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .dina-quote-mark {
+    font-family: var(--display);
+    font-size: 96px;
+    font-weight: 350;
+    line-height: 0.6;
+    color: var(--accent);
+    opacity: 0.25;
+    margin-bottom: 8px;
+    user-select: none;
+  }
+  .dina-text p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0 0 14px;
+  }
+  .dina-text p strong { font-weight: 600; color: var(--ink); }
+  .dina-sign {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .dina-signature {
+    font-family: var(--display);
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent-deep);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .dina-role {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 6px;
   }
 
   /* ─── SERVICES ─── */
@@ -1089,8 +1296,8 @@
   <div class="container row">
     <a href="#" class="logo">Dina<span class="dot">·</span>fi</a>
     <div class="navlinks">
-      <a href="#semaine">Démarrage</a>
-      <a href="#mensuel">Chaque mois</a>
+      <a href="#semaine">Comment ça marche</a>
+      <a href="#mensuel">Ce que je gère</a>
       <a href="#resultats">Résultats</a>
       <a href="#avis">Avis</a>
       <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn">
@@ -1126,7 +1333,10 @@
             Réserver un audit gratuit
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="#mensuel" class="btn btn-ghost">Ce qui est inclus chaque mois</a>
+          <a href="https://wa.me/261349071329?text=Bonjour Dina ! Je suis intéressé par tes services." target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:#25D366;color:#25D366;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Discuter sur WhatsApp
+          </a>
         </div>
       </div>
 
@@ -1149,7 +1359,7 @@
         <div class="lbl">Comptes Klaviyo</div>
       </div>
       <div>
-        <div class="num" data-counter="6" data-suffix=" ans">0 <em>ans</em></div>
+        <div class="num" data-counter="3" data-suffix=" ans">0 <em>ans</em></div>
         <div class="lbl">Sur le sujet</div>
       </div>
     </div>
@@ -1180,76 +1390,51 @@
     <div class="week-head">
       <div>
         <span class="sec-tag">Le démarrage</span>
-        <h2 class="h2">7 jours pour <em class="italic-acc">tout poser proprement.</em></h2>
-      </div>
-      <div class="right">
-        <p>Une semaine pour tout poser <strong>proprement</strong>. Puis je m'en occupe chaque mois. Voici les 7 jours, étape par étape.</p>
+        <h2 class="h2">Une semaine pour <em class="italic-acc">tout poser proprement.</em></h2>
       </div>
     </div>
 
-    <div class="timeline" id="timeline">
-      <div class="day">
-        <div class="d-num">01<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">On se rencontre</h4>
-          <p class="d-desc">Un appel ensemble pour bien démarrer. Tu me donnes les accès à ton compte Klaviyo, ta boutique en ligne et ton adresse email.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    <div class="seven-block">
+      <div class="seven-num">
+        <span class="seven-digit">7</span>
+        <span class="seven-label">jours</span>
       </div>
-      <div class="day">
-        <div class="d-num">02<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">Setup Klaviyo</h4>
-          <p class="d-desc">Je paramètre ton compte de A à Z : tes infos, ton identité, les bons réglages techniques pour que tout soit propre et solide.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </div>
-      <div class="day">
-        <div class="d-num">03<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">Design email & première campagne</h4>
-          <p class="d-desc">Je dessine tes modèles d'emails à ton identité visuelle et je prépare ta première newsletter. Tu valides. On lance.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </div>
-      <div class="day">
-        <div class="d-num">04<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">Flows · partie 1</h4>
-          <p class="d-desc">Je commence à mettre en place les automatismes : email de bienvenue, panier oublié, après l'achat. Tout part tout seul, au bon moment.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </div>
-      <div class="day">
-        <div class="d-num">05<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">Flows · partie 2</h4>
-          <p class="d-desc">Je termine les automatismes : retour client, anniversaire, et tous les autres. À ce stade, ton compte travaille déjà tout seul pour toi.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </div>
-      <div class="day">
-        <div class="d-num">06<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">Mise en ligne</h4>
-          <p class="d-desc">On teste tout, on vérifie chaque détail, et on bascule en mode live. Tes automatismes commencent à tourner pour de vrai.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </div>
-      <div class="day">
-        <div class="d-num">07<small>JOUR</small></div>
-        <div>
-          <h4 class="d-title">La gestion mensuelle commence</h4>
-          <p class="d-desc">Je prends le relais. À partir d'aujourd'hui, c'est moi qui m'occupe de tout. Premier rapport hebdo dans 7 jours, premier rapport mensuel dans 30.</p>
-        </div>
-        <svg class="d-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <div class="seven-content">
+        <p class="seven-lead">Sept jours pour tout poser proprement.</p>
+        <ul class="seven-points">
+          <li>
+            <span class="seven-check">✓</span>
+            <div><strong>J1 à J7 · Le démarrage.</strong> Setup complet, design des emails, automatismes, première campagne envoyée.</div>
+          </li>
+          <li>
+            <span class="seven-check">✓</span>
+            <div><strong>Puis chaque semaine.</strong> Campagnes, tests, ajustements. Ton compte vit, sans que tu aies à y toucher.</div>
+          </li>
+          <li>
+            <span class="seven-check">✓</span>
+            <div><strong>Et chaque mois.</strong> Rapport détaillé, stratégie pour le mois suivant. On reste alignés.</div>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="note reveal">
-      <p>Je travaille en direct, sans agence et sans intermédiaire. <strong>Maximum 6 marques en simultané.</strong> Pour pouvoir m'occuper de chaque compte comme s'il n'y avait que lui.</p>
-      <p>Si tu signes avec moi, c'est moi qui exécute, chaque semaine, chaque mois. Pas un junior, pas un sous-traitant. <strong>Sans engagement.</strong> Si ça ne te convient pas, on s'arrête, sans frais.</p>
-      <div class="signature">Dina</div>
+    <div class="dina-note reveal">
+      <div class="dina-photo">
+        <img src="Photo.png" alt="Dina, Klaviyo Manager" />
+        <div class="dina-status">
+          <span class="dina-dot"></span>
+          Disponible · 2 places restantes
+        </div>
+      </div>
+      <div class="dina-text">
+        <div class="dina-quote-mark">"</div>
+        <p>Je travaille en direct, sans agence et sans intermédiaire. <strong>Maximum 6 marques en simultané</strong>, pour m'occuper de chaque compte comme s'il n'y avait que lui.</p>
+        <p>Si tu signes avec moi, c'est moi qui exécute. Pas un junior, pas un sous-traitant. <strong>Sans engagement.</strong> Si ça ne te convient pas, on s'arrête, sans frais.</p>
+        <div class="dina-sign">
+          <div class="dina-signature">Dina</div>
+          <div class="dina-role">Klaviyo Manager</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1281,11 +1466,11 @@
       <article class="service">
         <span class="num">/ 02</span>
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg>
-        <h3>Flows <em>(automatismes)</em></h3>
-        <p>Je crée et j'optimise les automatismes qui font tourner ton revenu en arrière-plan : bienvenue, panier oublié, après l'achat, retour client, anniversaire.</p>
+        <h3>Flows</h3>
+        <p>Je crée et j'optimise les flows qui font tourner ton revenu en arrière-plan : bienvenue, panier oublié, après l'achat, retour client.</p>
         <ul>
-          <li>15+ automatismes actifs</li>
-          <li>Tests A/B en continu</li>
+          <li>Tous les flows clés</li>
+          <li>A/B tests en continu</li>
           <li>Optimisation des séquences</li>
           <li>Améliorations chaque mois</li>
         </ul>
@@ -1295,12 +1480,12 @@
         <span class="num">/ 03</span>
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <h3>Campagnes & <em>newsletters</em></h3>
-        <p>4 à 8 campagnes par mois, rédigées, designées, segmentées, programmées. Tu m'envoies les infos produit, je m'occupe de tout le reste.</p>
+        <p>8 à 16 campagnes par mois, voire plus, rédigées, designées, segmentées, programmées.</p>
         <ul>
           <li>Calendrier éditorial mensuel</li>
           <li>Rédaction et design</li>
           <li>Segmentation fine</li>
-          <li>Tests A/B sur chaque envoi</li>
+          <li>A/B tests sur chaque envoi</li>
         </ul>
       </article>
 
@@ -1321,9 +1506,8 @@
         <span class="num">/ 05</span>
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>Santé de la <em>boîte mail</em></h3>
-        <p>Je m'assure que tes emails arrivent bien en boîte principale, pas en spam. Configuration technique, réputation, taux de plainte. Tout est suivi.</p>
+        <p>Je m'assure que tes emails arrivent bien en boîte principale, pas en spam. Réputation, taux de plainte. Tout est suivi.</p>
         <ul>
-          <li>Authentification technique</li>
           <li>Suivi de la réputation</li>
           <li>Nettoyage de liste régulier</li>
           <li>Alerte en cas de souci</li>
@@ -1334,7 +1518,7 @@
         <span class="num">/ 06</span>
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>
         <h3>Reporting <em>mensuel</em></h3>
-        <p>Un rapport clair en début de mois : revenu généré, performance des flows, top campagnes, ce qui marche, ce qu'on change. En français, pas en jargon.</p>
+        <p>Un rapport clair en début de mois : revenu généré, performance des flows, top campagnes, ce qui marche, ce qu'on change.</p>
         <ul>
           <li>Revenu attribué détaillé</li>
           <li>Comparaison vs mois précédent</li>
@@ -1505,7 +1689,7 @@
     <div class="testi-head">
       <span class="sec-tag">Avis clients</span>
       <h2 class="h2">Ce que disent les marques <em class="italic-acc">que je gère.</em></h2>
-      <p class="lede">Six ans, 42 comptes Klaviyo, et une obsession : être le meilleur euro investi de ton stack marketing.</p>
+      <p class="lede">Trois ans, 42 comptes Klaviyo, et une obsession : être le meilleur euro investi de ton stack marketing.</p>
     </div>
 
     <div class="testi-grid">
@@ -1616,8 +1800,8 @@
     <div class="foot-row">
       <div class="logo">Dina<span class="dot">·</span>fi</div>
       <div class="foot-links">
-        <a href="#semaine">Démarrage</a>
-        <a href="#mensuel">Chaque mois</a>
+        <a href="#semaine">Comment ça marche</a>
+        <a href="#mensuel">Ce que je gère</a>
         <a href="#avis">Avis</a>
         <a href="https://www.linkedin.com/in/dina-razafimahaleo/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://wa.me/261349071329" target="_blank" rel="noopener">WhatsApp</a>
