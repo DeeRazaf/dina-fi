@@ -1286,10 +1286,121 @@
   .js .service:not(.in),
   .js .testi:not(.in),
   .js .dash-card:not(.in),
+  .js .reals-card:not(.in),
   .js .sec-tag:not(.in) {
     opacity: 0;
     transform: translateY(20px);
   }
+
+  /* ─── RÉALISATIONS · APERÇU ─── */
+  .reals-section { background: var(--bg-soft); }
+  .reals-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+  .reals-head-text { max-width: 720px; }
+  .reals-head .lede { margin: 20px 0 0; }
+  .reals-head .btn { flex-shrink: 0; }
+  @media (max-width: 760px) { .reals-head .btn { display: none; } }
+
+  .reals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 980px) { .reals-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) {
+    .reals-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+  }
+
+  .reals-card {
+    display: block;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-rest);
+    transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .35s var(--ease-out);
+  }
+  .reals-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--ink);
+  }
+  .reals-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .reals-dots {
+    display: flex;
+    gap: 6px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .reals-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+  .reals-dots span:first-child { background: #FF605C; }
+  .reals-dots span:nth-child(2) { background: #FFBD44; }
+  .reals-dots span:last-child { background: #00CA4E; }
+
+  .reals-img-wrap { position: relative; height: 380px; overflow: hidden; }
+  .reals-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform .6s var(--ease-out);
+  }
+  .reals-card:hover .reals-img-wrap img { transform: scale(1.03); }
+  .reals-img-wrap::after {
+    content: "";
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(to top, var(--bg), transparent);
+    pointer-events: none;
+  }
+
+  .reals-info { padding: 18px 22px 22px; }
+  .reals-info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .reals-brand {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 550;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .reals-type {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 9999px;
+  }
+  .reals-type[data-cat="flow"] { color: var(--accent-deep); background: var(--accent-soft); border: 1px solid rgba(0,168,126,0.15); }
+  .reals-type[data-cat="campagne"] { color: #5B21B6; background: #F3EEFF; border: 1px solid rgba(91,33,182,0.12); }
+  .reals-type[data-cat="evenement"] { color: #B45309; background: #FFF7ED; border: 1px solid rgba(180,83,9,0.12); }
+  .reals-industry {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .reals-foot {
+    display: none;
+    margin-top: 40px;
+    justify-content: center;
+  }
+  @media (max-width: 760px) { .reals-foot { display: flex; } }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -1713,6 +1824,76 @@
 
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ============ RÉALISATIONS · APERÇU ============ -->
+<section id="realisations-preview" class="reals-section">
+  <div class="container">
+    <div class="reals-head">
+      <div class="reals-head-text reveal">
+        <span class="sec-tag">Réalisations</span>
+        <h2 class="h2">Les emails derrière <em class="italic-acc">les résultats.</em></h2>
+        <p class="lede">Flows, campagnes, événements. Chaque email est pensé pour convertir, pas juste pour être joli. Un aperçu de ce que je crée chaque mois pour mes clients.</p>
+      </div>
+      <a href="realisations.html" class="btn btn-ghost">
+        Voir tout
+        <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
+      </a>
+    </div>
+
+    <div class="reals-grid">
+
+      <a href="realisations.html" class="reals-card reveal" aria-label="Voir l'email Maison Verveine — Bienvenue">
+        <div class="reals-dots"><span></span><span></span><span></span></div>
+        <div class="reals-img-wrap">
+          <img src="portfolio/verveine-bienvenue.webp" alt="Email Maison Verveine — Bienvenue -15%" loading="lazy" decoding="async" />
+        </div>
+        <div class="reals-info">
+          <div class="reals-info-top">
+            <span class="reals-brand">Maison Verveine</span>
+            <span class="reals-type" data-cat="flow">Flow</span>
+          </div>
+          <div class="reals-industry">Skincare · Cosmétique</div>
+        </div>
+      </a>
+
+      <a href="realisations.html" class="reals-card reveal" aria-label="Voir l'email Onde — Black Friday">
+        <div class="reals-dots"><span></span><span></span><span></span></div>
+        <div class="reals-img-wrap">
+          <img src="portfolio/onde-blackfriday.webp" alt="Email Onde — Black Friday -30%" loading="lazy" decoding="async" />
+        </div>
+        <div class="reals-info">
+          <div class="reals-info-top">
+            <span class="reals-brand">Onde</span>
+            <span class="reals-type" data-cat="evenement">Événement</span>
+          </div>
+          <div class="reals-industry">Audio · Tech</div>
+        </div>
+      </a>
+
+      <a href="realisations.html" class="reals-card reveal" aria-label="Voir l'email Cadence Paris — Lancement collection">
+        <div class="reals-dots"><span></span><span></span><span></span></div>
+        <div class="reals-img-wrap">
+          <img src="portfolio/cadence-collection.webp" alt="Email Cadence Paris — Lancement nouvelle collection" loading="lazy" decoding="async" />
+        </div>
+        <div class="reals-info">
+          <div class="reals-info-top">
+            <span class="reals-brand">Cadence Paris</span>
+            <span class="reals-type" data-cat="campagne">Campagne</span>
+          </div>
+          <div class="reals-industry">Mode · Athleisure</div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="reals-foot">
+      <a href="realisations.html" class="btn btn-ghost">
+        Voir toutes les réalisations
+        <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
+      </a>
     </div>
   </div>
 </section>
