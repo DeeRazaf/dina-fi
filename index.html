@@ -323,7 +323,6 @@
   }
   @media (max-width: 860px) {
     .navlinks a:not(.btn) { display: none; }
-    .nav-burger { display: flex; }
     .mobile-menu:not([hidden]) { display: flex; }
   }
 
@@ -365,6 +364,12 @@
     border-bottom: 1px solid var(--line-soft);
   }
   .mobile-menu a:last-child { border-bottom: 0; }
+
+  @media (max-width: 860px) {
+    .navlinks { gap: 12px; }
+    .navlinks .btn { padding: 10px 14px; font-size: 13px; }
+    .nav-burger { display: flex; }
+  }
 
   /* ─── HERO ─── */
   .hero {

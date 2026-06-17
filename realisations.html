@@ -268,7 +268,6 @@
   }
   @media (max-width: 860px) {
     .navlinks a:not(.btn) { display: none; }
-    .nav-burger { display: flex; }
     .mobile-menu:not([hidden]) { display: flex; }
   }
 
@@ -311,6 +310,12 @@
   }
   .mobile-menu a:last-child { border-bottom: 0; }
   .mobile-menu a.active { color: var(--accent-deep); }
+
+  @media (max-width: 860px) {
+    .navlinks { gap: 12px; }
+    .navlinks .btn { padding: 10px 14px; font-size: 13px; }
+    .nav-burger { display: flex; }
+  }
 
   /* ─── PORTFOLIO HERO ─── */
   .port-hero {
@@ -649,9 +654,11 @@
   @media (max-width: 860px) {
     .lb-container {
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr auto;
-      max-width: 480px;
+      grid-template-rows: 58vh minmax(0, 1fr);
+      max-width: 460px;
     }
+    .lb-scroll { max-height: none; }
+    .lb-side { padding: 24px 22px; }
   }
 
   .lb-scroll {
