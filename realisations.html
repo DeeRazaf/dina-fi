@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Réalisations · Dina · Klaviyo Manager</title>
+<meta name="description" content="Portfolio d'emails Klaviyo : flows, campagnes, événements. Designs qui convertissent pour marques DTC." />
+
+<link rel="canonical" href="https://deerazaf.github.io/dina-fi/realisations" />
+<meta name="theme-color" content="#FFFFFF" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://deerazaf.github.io/dina-fi/realisations" />
+<meta property="og:title" content="Réalisations · Dina · Klaviyo Manager" />
+<meta property="og:description" content="Portfolio d'emails Klaviyo : flows, campagnes, événements. Designs qui convertissent pour marques DTC." />
+<meta property="og:locale" content="fr_FR" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0A'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%2300A87E'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');</script>
+
+<style>
+  :root {
+    --bg:        #FFFFFF;
+    --bg-soft:   #FAFAF7;
+    --bg-cream:  #F4F2EC;
+    --bg-dark:   #0A0A0A;
+    --bg-tint:   #F0F4F1;
+    --ink:       #0A0A0A;
+    --ink-soft:  #2A2A2A;
+    --muted:     #71717A;
+    --muted-2:   #A1A1AA;
+    --line:      #EAEAE5;
+    --line-soft: #F0F0EB;
+    --accent:      #00A87E;
+    --accent-deep: #007A5A;
+    --accent-soft: #E6F5EF;
+    --accent-glow: #36F4A4;
+    --display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+    --sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, monospace;
+    --maxw: 1280px;
+    --pad: clamp(20px, 4vw, 64px);
+    --ease-out: cubic-bezier(.16,1,.3,1);
+    --ease-in-out: cubic-bezier(.7,0,.3,1);
+    --shadow-rest:
+      0 0 0 1px rgba(10,10,10,0.04),
+      0 1px 2px rgba(10,10,10,0.04),
+      0 4px 8px rgba(10,10,10,0.04),
+      0 16px 32px rgba(10,10,10,0.04);
+    --shadow-hover:
+      0 0 0 1px rgba(10,10,10,0.06),
+      0 2px 4px rgba(10,10,10,0.05),
+      0 8px 16px rgba(10,10,10,0.06),
+      0 24px 48px rgba(10,10,10,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-feature-settings: "ss01", "ss03", "cv01";
+    font-size: 17px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  ::selection { background: var(--ink); color: #fff; }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 16px; top: -56px;
+    z-index: 200;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 9999px;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    transition: top .2s var(--ease-out);
+  }
+  .skip-link:focus { top: 12px; }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
+
+  .display {
+    font-family: var(--display);
+    font-weight: 350;
+    font-size: clamp(34px, 4.5vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .h2 {
+    font-family: var(--display);
+    font-weight: 380;
+    font-size: clamp(32px, 4.5vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+  .lede {
+    font-size: clamp(18px, 1.8vw, 22px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  em.italic-acc {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 350;
+  }
+
+  .sec-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    background: var(--bg);
+    margin-bottom: 32px;
+  }
+  .sec-tag::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px 14px 24px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    border: 2px solid var(--ink);
+    border-radius: 9999px;
+    transition: all 240ms var(--ease-out);
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #1F1F1F;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(10,10,10,0.18);
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--accent-glow);
+    outline-offset: 3px;
+  }
+  .btn .arrow { transition: transform 240ms var(--ease-out); }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .btn-ghost:hover {
+    background: var(--ink);
+    color: #fff;
+  }
+  .btn-light {
+    background: #fff;
+    color: var(--ink);
+    border-color: #fff;
+  }
+  .btn-light:hover {
+    background: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(255,255,255,0.2);
+  }
+  .btn-outline-light {
+    background: transparent;
+    border-color: rgba(255,255,255,0.4);
+    color: #fff;
+  }
+  .btn-outline-light:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.8);
+    box-shadow: none;
+  }
+  .cta-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* ─── SCROLL PROGRESS ─── */
+  .scroll-progress {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: transparent;
+    z-index: 100; pointer-events: none;
+  }
+  .scroll-progress::before {
+    content: "";
+    display: block; height: 100%;
+    background: var(--accent);
+    width: var(--p, 0%);
+    transition: width .1s linear;
+  }
+
+  /* ─── NAV ─── */
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease;
+  }
+  nav.top.scrolled { border-bottom-color: var(--line); }
+  nav.top .row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-block: 18px;
+  }
+  .logo {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    display: flex; align-items: baseline; gap: 2px;
+    color: var(--ink);
+  }
+  .logo .dot { color: var(--accent); }
+  .navlinks {
+    display: flex; align-items: center; gap: 36px;
+  }
+  .navlinks a:not(.btn) {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: color .2s ease;
+  }
+  .navlinks a:not(.btn):hover { color: var(--ink); }
+  .navlinks a.active { color: var(--accent-deep); }
+  .navlinks .btn {
+    padding: 11px 18px 11px 20px;
+    font-size: 14px;
+  }
+  @media (max-width: 860px) {
+    .navlinks a:not(.btn) { display: none; }
+    .nav-burger { display: flex; }
+    .mobile-menu:not([hidden]) { display: flex; }
+  }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 42px; height: 42px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 10px;
+  }
+  .nav-burger span {
+    display: block;
+    width: 20px; height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform .25s var(--ease-out);
+  }
+  .nav-burger.open span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .nav-burger.open span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+  .nav-burger:focus-visible { outline: 2px solid var(--accent-glow); outline-offset: 2px; }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding-block: 6px 16px;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-menu a {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .mobile-menu a:last-child { border-bottom: 0; }
+  .mobile-menu a.active { color: var(--accent-deep); }
+
+  /* ─── PORTFOLIO HERO ─── */
+  .port-hero {
+    position: relative;
+    padding: clamp(56px, 8vw, 100px) 0 clamp(40px, 5vw, 64px);
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 700px 400px at 15% 20%, var(--bg-tint), transparent 70%),
+      radial-gradient(ellipse 500px 350px at 85% 80%, var(--accent-soft), transparent 60%),
+      var(--bg);
+  }
+  .port-hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(10,10,10,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10,10,10,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 70%);
+    pointer-events: none;
+  }
+  .port-hero .container { position: relative; z-index: 1; }
+  .port-hero h1 { margin: 0 0 24px; }
+  .port-hero .lede {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .port-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 760px) {
+    .port-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  }
+  .port-stats .num {
+    font-family: var(--display);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 380;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .port-stats .num em {
+    font-style: normal;
+    color: var(--accent);
+    font-size: 0.75em;
+  }
+  .port-stats .lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ─── FILTER BAR ─── */
+  .filter-section {
+    padding: 0;
+    position: sticky;
+    top: 64px;
+    z-index: 40;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .filter-btn {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    background: transparent;
+    border: 1.5px solid var(--line);
+    border-radius: 9999px;
+    transition: all .25s var(--ease-out);
+    white-space: nowrap;
+  }
+  .filter-btn:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .filter-btn.active {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .filter-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 6px;
+    opacity: 0.6;
+  }
+
+  /* ─── PORTFOLIO GRID ─── */
+  .port-section {
+    padding: clamp(48px, 6vw, 80px) 0 clamp(72px, 10vw, 140px);
+    background: var(--bg-soft);
+  }
+  .port-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 980px) {
+    .port-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .port-grid { grid-template-columns: 1fr; max-width: 440px; }
+  }
+
+  .port-item {
+    transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
+  }
+  .port-item.hiding {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  .port-item.hidden {
+    display: none;
+  }
+
+  .port-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-rest);
+    transition: all .35s var(--ease-out);
+    cursor: pointer;
+  }
+  .port-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--ink);
+  }
+  .port-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .port-frame {
+    position: relative;
+    background: #F8F8F6;
+  }
+  .port-dots {
+    display: flex;
+    gap: 6px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .port-dots span {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+  .port-dots span:first-child { background: #FF605C; }
+  .port-dots span:nth-child(2) { background: #FFBD44; }
+  .port-dots span:last-child { background: #00CA4E; }
+
+  .port-img-wrap {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+  }
+  .port-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform .6s var(--ease-out);
+  }
+  .port-card:hover .port-img-wrap img {
+    transform: scale(1.02);
+  }
+  .port-img-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    height: 100px;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .port-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity .3s var(--ease-out);
+  }
+  .port-card:hover .port-overlay {
+    opacity: 1;
+  }
+  .port-overlay-btn {
+    padding: 12px 24px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 550;
+    border-radius: 9999px;
+    border: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(8px);
+    transition: transform .3s var(--ease-out);
+  }
+  .port-card:hover .port-overlay-btn {
+    transform: translateY(0);
+  }
+
+  .port-info {
+    padding: 20px 24px 24px;
+  }
+  .port-info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .port-brand {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 550;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .port-type {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 9999px;
+  }
+  .port-type[data-cat="flow"] {
+    color: var(--accent-deep);
+    background: var(--accent-soft);
+    border: 1px solid rgba(0,168,126,0.15);
+  }
+  .port-type[data-cat="campagne"] {
+    color: #5B21B6;
+    background: #F3EEFF;
+    border: 1px solid rgba(91,33,182,0.12);
+  }
+  .port-type[data-cat="evenement"] {
+    color: #B45309;
+    background: #FFF7ED;
+    border: 1px solid rgba(180,83,9,0.12);
+  }
+  .port-industry {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .port-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.open {
+    display: flex;
+  }
+  .lb-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transition: opacity .35s var(--ease-out);
+  }
+  .lightbox.open .lb-backdrop {
+    opacity: 1;
+  }
+
+  .lb-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(300px, 520px) 340px;
+    max-width: 900px;
+    width: 90vw;
+    max-height: 90vh;
+    background: var(--bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+    opacity: 0;
+    transform: scale(0.96) translateY(16px);
+    transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
+  }
+  .lightbox.open .lb-container {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  @media (max-width: 860px) {
+    .lb-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr auto;
+      max-width: 480px;
+    }
+  }
+
+  .lb-scroll {
+    overflow-y: auto;
+    max-height: 90vh;
+    background: #F8F8F6;
+    overscroll-behavior: contain;
+  }
+  .lb-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .lb-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .lb-scroll::-webkit-scrollbar-thumb {
+    background: var(--muted-2);
+    border-radius: 3px;
+  }
+  .lb-scroll img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .lb-side {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--line);
+    overflow-y: auto;
+  }
+  @media (max-width: 860px) {
+    .lb-side { border-left: 0; border-top: 1px solid var(--line); }
+  }
+  .lb-side .port-type { margin-bottom: 16px; }
+  .lb-brand {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .lb-industry {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+  }
+  .lb-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .lb-strategy {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .lb-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+  .lb-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    padding: 6px 12px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+  }
+  .lb-cta {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .lb-cta p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0 0 16px;
+    line-height: 1.55;
+  }
+
+  .lb-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    z-index: 10;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .lb-close:hover {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .lb-close svg { width: 16px; height: 16px; }
+
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    transform: translateY(-50%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .lb-nav:hover {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .lb-nav svg { width: 16px; height: 16px; }
+  .lb-prev { left: -60px; }
+  .lb-next { right: -60px; }
+  @media (max-width: 1100px) {
+    .lb-prev { left: 12px; }
+    .lb-next { right: 12px; }
+    .lb-prev, .lb-next { background: rgba(255,255,255,0.9); }
+  }
+
+  /* ─── MORE COMING ─── */
+  .more-section {
+    padding: clamp(48px, 6vw, 80px) 0;
+    text-align: center;
+  }
+  .more-section .h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    margin: 0 0 16px;
+  }
+  .more-section p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--bg-dark);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(72px, 10vw, 140px) 0;
+  }
+  .cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 400px at 80% 20%, rgba(54,244,164,0.12), transparent 60%),
+      radial-gradient(ellipse 500px 300px at 10% 80%, rgba(0,168,126,0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .cta-wrap {
+    max-width: 820px;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-wrap h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 350;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 24px;
+    color: #fff;
+  }
+  .cta-wrap h2 em {
+    font-style: italic;
+    color: var(--accent-glow);
+    font-weight: 350;
+  }
+  .cta-wrap p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 36px;
+    max-width: 680px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  .foot-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .foot-row > div:last-child {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .foot-links {
+    display: flex; gap: 28px; flex-wrap: wrap;
+  }
+  .foot-links a {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: color .2s ease;
+  }
+  .foot-links a:hover { color: var(--accent-deep); }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .wa-float {
+    position: fixed;
+    right: 24px; bottom: 24px;
+    height: 60px;
+    padding: 0 22px 0 18px;
+    background: #25D366;
+    color: #fff;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    box-shadow:
+      0 12px 32px rgba(37,211,102,0.4),
+      0 4px 12px rgba(10,10,10,0.18);
+    z-index: 60;
+    transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
+    animation: wa-pulse 2.4s infinite;
+  }
+  .wa-float:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(37,211,102,0.5), 0 6px 16px rgba(10,10,10,0.2);
+  }
+  .wa-float svg { width: 26px; height: 26px; flex-shrink: 0; }
+  .wa-float .wa-label { white-space: nowrap; }
+  @keyframes wa-pulse {
+    0%, 100% { box-shadow: 0 12px 32px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.5); }
+    50%      { box-shadow: 0 12px 32px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0); }
+  }
+  @media (max-width: 600px) {
+    .wa-float { padding: 0 18px 0 16px; height: 54px; font-size: 15px; }
+  }
+
+  /* ─── REVEAL ─── */
+  .reveal,
+  .sec-tag {
+    transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+  }
+  .js .reveal:not(.in),
+  .js .port-item:not(.in),
+  .js .sec-tag:not(.in) {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+  <symbol id="ic-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="ic-chevl" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-chevr" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ic-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+</svg>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="top" id="topNav" aria-label="Navigation principale">
+  <div class="container row">
+    <a href="index.html" class="logo">Dina<span class="dot">·</span>fi</a>
+    <div class="navlinks">
+      <a href="index.html#semaine">Comment ça marche</a>
+      <a href="index.html#mensuel">Ce que je gère</a>
+      <a href="realisations.html" class="active">Réalisations</a>
+      <a href="index.html#avis">Avis</a>
+      <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn">
+        Audit gratuit
+        <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu container" id="mobileMenu" hidden>
+    <a href="index.html#semaine">Comment ça marche</a>
+    <a href="index.html#mensuel">Ce que je gère</a>
+    <a href="realisations.html" class="active">Réalisations</a>
+    <a href="index.html#avis">Avis</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="port-hero">
+  <div class="container">
+    <span class="sec-tag">Portfolio</span>
+    <h1 class="display">
+      Les emails derrière<br>
+      <em class="italic-acc">les résultats.</em>
+    </h1>
+    <p class="lede">
+      Flows, campagnes, événements. Chaque email est pensé pour convertir, pas juste pour être joli. Voici ce que je crée chaque mois pour mes clients.
+    </p>
+
+    <div class="port-stats reveal">
+      <div>
+        <div class="num">42<em>+</em></div>
+        <div class="lbl">Marques accompagnées</div>
+      </div>
+      <div>
+        <div class="num">500<em>+</em></div>
+        <div class="lbl">Emails designés</div>
+      </div>
+      <div>
+        <div class="num">100<em>%</em></div>
+        <div class="lbl">Sur-mesure, zéro template</div>
+      </div>
+      <div>
+        <div class="num">+30<em>%</em></div>
+        <div class="lbl">Revenu email moyen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILTER BAR ============ -->
+<div class="filter-section">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tous<span class="filter-count" id="countAll"></span></button>
+      <button class="filter-btn" data-filter="flow">Flows<span class="filter-count" id="countFlow"></span></button>
+      <button class="filter-btn" data-filter="campagne">Campagnes<span class="filter-count" id="countCampagne"></span></button>
+      <button class="filter-btn" data-filter="evenement">Événements<span class="filter-count" id="countEvenement"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PORTFOLIO GRID ============ -->
+<section class="port-section">
+  <div class="container">
+    <div class="port-grid" id="portGrid">
+
+      <!-- ── 01 · CADENCE PARIS ── -->
+      <article class="port-item" data-type="campagne" tabindex="0"
+        data-brand="Cadence Paris"
+        data-industry="Mode · Athleisure"
+        data-strategy="Lancement de nouvelle collection avec code promo exclusif. Structure hero > détails produit > cross-sell pensée pour maximiser le taux de clic. Design épuré qui met en valeur le produit, pas le bruit."
+        data-tags="Lancement,Promo code,Cross-sell,Product showcase"
+        data-img="portfolio/cadence-collection.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/cadence-collection.webp" alt="Email Cadence Paris — Lancement nouvelle collection" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Cadence Paris</span>
+              <span class="port-type" data-cat="campagne">Campagne</span>
+            </div>
+            <div class="port-industry">Mode · Athleisure</div>
+            <p class="port-desc">Lancement nouvelle collection avec code promo. Structure hero > détails > cross-sell optimisée pour la conversion.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 02 · CHOUCHOU ── -->
+      <article class="port-item" data-type="flow" tabindex="0"
+        data-brand="Chouchou"
+        data-industry="Compléments alimentaires"
+        data-strategy="Récupération de panier abandonné avec un ton fun et décomplexé, fidèle à l'ADN de la marque. Mise en avant des produits oubliés avec bénéfices clés et CTA fort. Le design coloré et ludique crée une urgence douce sans pression."
+        data-tags="Panier abandonné,Tone of voice,Produit showcase,Urgence douce"
+        data-img="portfolio/chouchou-panier.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/chouchou-panier.webp" alt="Email Chouchou — Panier abandonné" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Chouchou</span>
+              <span class="port-type" data-cat="flow">Flow</span>
+            </div>
+            <div class="port-industry">Compléments alimentaires</div>
+            <p class="port-desc">Panier abandonné au ton fun et décomplexé. Produits oubliés avec bénéfices clés et CTA fort.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 03 · FRÊNE ── -->
+      <article class="port-item" data-type="evenement" tabindex="0"
+        data-brand="Frêne"
+        data-industry="Mobilier français"
+        data-strategy="Campagne événementielle French Days avec sentiment d'urgence. Navigation par pièce (salon, chambre, salle à manger) pour faciliter la découverte. Mise en avant des best-sellers avec prix barrés et compte à rebours implicite."
+        data-tags="French Days,Urgence,Navigation catégorie,Prix barrés"
+        data-img="portfolio/frene-french-days.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/frene-french-days.webp" alt="Email Frêne — French Days mobilier" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Frêne</span>
+              <span class="port-type" data-cat="evenement">Événement</span>
+            </div>
+            <div class="port-industry">Mobilier français</div>
+            <p class="port-desc">French Days avec urgence et navigation par pièce. Best-sellers en avant avec prix barrés.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 04 · GLOU BLACK FRIDAY ── -->
+      <article class="port-item" data-type="evenement" tabindex="0"
+        data-brand="Glou"
+        data-industry="Boissons pétillantes bio"
+        data-strategy="Black Friday rebrandé 'Black Glou' pour rester fidèle à l'identité de marque. Countdown en temps réel pour l'urgence, mise en avant des best-sellers à -50%, et offres par volume (1/2/3 caisses) pour augmenter le panier moyen."
+        data-tags="Black Friday,Countdown,Volume discount,Best-sellers"
+        data-img="portfolio/glou-blackfriday.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/glou-blackfriday.webp" alt="Email Glou — Black Friday" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Glou</span>
+              <span class="port-type" data-cat="evenement">Événement</span>
+            </div>
+            <div class="port-industry">Boissons pétillantes bio</div>
+            <p class="port-desc">Black Glou avec countdown, best-sellers à -50% et offres volume pour booster le panier moyen.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 05 · GLOU REPLENISHMENT ── -->
+      <article class="port-item" data-type="flow" tabindex="0"
+        data-brand="Glou"
+        data-industry="Boissons pétillantes bio"
+        data-strategy="Email de réapprovisionnement basé sur le cycle de consommation estimé. Rappel de la dernière commande avec bouton 'recommander en 1 clic'. Upsell abonnement pour créer de la récurrence. Ton léger et décalé avec le frigo vide."
+        data-tags="Replenishment,Réachat,Upsell abo,Cycle consommation"
+        data-img="portfolio/glou-replenishment.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/glou-replenishment.webp" alt="Email Glou — Réapprovisionnement" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Glou</span>
+              <span class="port-type" data-cat="flow">Flow</span>
+            </div>
+            <div class="port-industry">Boissons pétillantes bio</div>
+            <p class="port-desc">Réapprovisionnement basé sur le cycle de conso. Réachat en 1 clic et upsell abonnement.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 06 · GLOU WELCOME ── -->
+      <article class="port-item" data-type="flow" tabindex="0"
+        data-brand="Glou"
+        data-industry="Boissons pétillantes bio"
+        data-strategy="Email de bienvenue avec code promo personnalisé au prénom. Présentation de la marque et de ses valeurs (zéro sucre, bio & vegan, cultures vivantes), preuve sociale via avis clients, et comparatif 'le nôtre vs le leur' pour ancrer la différenciation. Best-sellers en clôture pour guider le premier achat."
+        data-tags="Welcome series,Code promo,Preuve sociale,Comparatif,Best-sellers"
+        data-img="portfolio/glou-bienvenue.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/glou-bienvenue.webp" alt="Email Glou — Bienvenue dans la famille" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Glou</span>
+              <span class="port-type" data-cat="flow">Flow</span>
+            </div>
+            <div class="port-industry">Boissons pétillantes bio</div>
+            <p class="port-desc">Welcome series avec code promo, preuve sociale et comparatif concurrentiel pour guider le 1er achat.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 07 · MAISON VERVEINE WELCOME ── -->
+      <article class="port-item" data-type="flow" tabindex="0"
+        data-brand="Maison Verveine"
+        data-industry="Skincare · Cosmétique"
+        data-strategy="Bienvenue premium avec offre -15% personnalisée. Mise en scène produit avec annotations manuscrites (origine naturelle, sans parfum de synthèse) pour le storytelling. Réassurance via badges (vegan, clean, made in France, cruelty-free), sélection rituel et témoignages clients pour lever les freins à l'achat."
+        data-tags="Welcome series,Storytelling,Réassurance,Annotations,Rituel produit"
+        data-img="portfolio/verveine-bienvenue.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/verveine-bienvenue.webp" alt="Email Maison Verveine — Bienvenue -15%" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Maison Verveine</span>
+              <span class="port-type" data-cat="flow">Flow</span>
+            </div>
+            <div class="port-industry">Skincare · Cosmétique</div>
+            <p class="port-desc">Bienvenue premium -15%, storytelling annoté, réassurance et sélection rituel pour lever les freins.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 08 · MAISON VERVEINE BLACK FRIDAY ── -->
+      <article class="port-item" data-type="evenement" tabindex="0"
+        data-brand="Maison Verveine"
+        data-industry="Skincare · Cosmétique"
+        data-strategy="Black Friday à l'univers nocturne fidèle à la marque ('le jardin ouvre ses portes de nuit'). Direction artistique sombre et élégante qui tranche avec le BF agressif classique. Bundles rituels avec prix barrés, mention du 'préféré' pour orienter le choix, et urgence via deadline claire (dimanche minuit)."
+        data-tags="Black Friday,Direction artistique,Bundles,Prix barrés,Urgence"
+        data-img="portfolio/verveine-blackfriday.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/verveine-blackfriday.webp" alt="Email Maison Verveine — Black Friday -25%" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Maison Verveine</span>
+              <span class="port-type" data-cat="evenement">Événement</span>
+            </div>
+            <div class="port-industry">Skincare · Cosmétique</div>
+            <p class="port-desc">Black Friday nocturne et élégant. Bundles rituels avec prix barrés et urgence maîtrisée.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 09 · ONDE BLACK FRIDAY ── -->
+      <article class="port-item" data-type="evenement" tabindex="0"
+        data-brand="Onde"
+        data-industry="Audio · Tech"
+        data-strategy="Avant-première Black Friday -30% sur du matériel audio premium. Direction artistique noire et cuivre qui valorise le produit haut de gamme. Countdown pour l'urgence, vue éclatée du casque avec features annotées (réduction de bruit, autonomie, transducteur), et pack Studio en édition limitée avec valeur totale ancrée pour justifier le prix."
+        data-tags="Black Friday,Countdown,Feature annotée,Pack premium,Anchoring prix"
+        data-img="portfolio/onde-blackfriday.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/onde-blackfriday.webp" alt="Email Onde — Black Friday -30%" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Onde</span>
+              <span class="port-type" data-cat="evenement">Événement</span>
+            </div>
+            <div class="port-industry">Audio · Tech</div>
+            <p class="port-desc">Avant-première BF -30% premium. Countdown, features annotées et pack édition limitée avec anchoring.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 10 · ONDE BLACK FRIDAY · STRUCTURE ── -->
+      <article class="port-item" data-type="evenement" tabindex="0"
+        data-brand="Onde"
+        data-industry="Audio · Tech"
+        data-strategy="Variante longue de la campagne Black Friday avec décryptage de la structure (CTA + countdown, feature annotée, anchoring). Ajout de sections de réassurance (garantie 2 ans, livraison express, 30 jours d'essai, paiement 3x) et d'un bloc émotionnel 'le son, sculpté' pour prolonger l'engagement avant la conversion."
+        data-tags="Black Friday,Structure,Réassurance,Storytelling,Conversion"
+        data-img="portfolio/onde-blackfriday-2.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/onde-blackfriday-2.webp" alt="Email Onde — Black Friday -30% version longue" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Onde</span>
+              <span class="port-type" data-cat="evenement">Événement</span>
+            </div>
+            <div class="port-industry">Audio · Tech</div>
+            <p class="port-desc">Variante longue BF avec réassurance complète et bloc émotionnel pour prolonger l'engagement.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── 11 · SOIE & LIN WELCOME ── -->
+      <article class="port-item" data-type="flow" tabindex="0"
+        data-brand="Soie & Lin"
+        data-industry="Linge de maison · Literie"
+        data-strategy="Bienvenue haut de gamme avec offre -10% et direction artistique douce, lumineuse, fidèle au positionnement literie premium. Storytelling autour de l'origine (lin de Normandie, petites séries, certifié Oeko-Tex), sélection produit avec preuve sociale étoilée, heritage band 'du champ de lin à votre chambre' et founder's note pour incarner la marque et créer la confiance."
+        data-tags="Welcome series,Direction artistique,Storytelling,Founder's note,Réassurance"
+        data-img="portfolio/soie-lin-bienvenue.webp">
+        <div class="port-card">
+          <div class="port-frame">
+            <div class="port-dots"><span></span><span></span><span></span></div>
+            <div class="port-img-wrap">
+              <img src="portfolio/soie-lin-bienvenue.webp" alt="Email Soie & Lin — Bienvenue -10%" loading="lazy" decoding="async" />
+              <div class="port-overlay">
+                <button class="port-overlay-btn">
+                  <svg width="16" height="16" aria-hidden="true"><use href="#ic-eye"/></svg>
+                  Voir l'email complet
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="port-info">
+            <div class="port-info-top">
+              <span class="port-brand">Soie & Lin</span>
+              <span class="port-type" data-cat="flow">Flow</span>
+            </div>
+            <div class="port-industry">Linge de maison · Literie</div>
+            <p class="port-desc">Bienvenue premium -10%, storytelling d'origine, founder's note et réassurance pour créer la confiance.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-wrap">
+      <h2>Tu veux des emails<br>comme ceux-là <em>pour ta marque ?</em></h2>
+      <p>Audit gratuit de ton compte Klaviyo. 30 minutes, aucun engagement. Tu repars avec 3 actions concrètes, que tu signes ou non.</p>
+      <div class="cta-actions">
+        <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn btn-light">
+          Réserver mon audit
+          <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
+        </a>
+        <a href="https://wa.me/261349071329?text=Salut%20Dina%20%21%20J%27ai%20vu%20tes%20r%C3%A9alisations%2C%20j%27aimerais%20parler%20de%20mon%20compte%20Klaviyo." target="_blank" rel="noopener" class="btn btn-outline-light">
+          <svg width="16" height="16" aria-hidden="true"><use href="#ic-wa"/></svg>
+          M'écrire sur WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-row">
+      <a href="index.html" class="logo">Dina<span class="dot">·</span>fi</a>
+      <div class="foot-links">
+        <a href="index.html#semaine">Comment ça marche</a>
+        <a href="index.html#mensuel">Ce que je gère</a>
+        <a href="realisations.html">Réalisations</a>
+        <a href="index.html#avis">Avis</a>
+        <a href="https://www.linkedin.com/in/dina-razafimahaleo/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/261349071329" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <div>&copy; 2026 &middot; Tous droits réservés</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu email">
+  <div class="lb-backdrop" id="lbBackdrop"></div>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Email précédent">
+    <svg aria-hidden="true"><use href="#ic-chevl"/></svg>
+  </button>
+  <div class="lb-container">
+    <button class="lb-close" id="lbClose" aria-label="Fermer">
+      <svg aria-hidden="true"><use href="#ic-close"/></svg>
+    </button>
+    <div class="lb-scroll" id="lbScroll">
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <div class="lb-side">
+      <span class="port-type" id="lbType" data-cat=""></span>
+      <div class="lb-brand" id="lbBrand"></div>
+      <div class="lb-industry" id="lbIndustry"></div>
+      <div class="lb-label">Stratégie</div>
+      <p class="lb-strategy" id="lbStrategy"></p>
+      <div class="lb-label">Techniques utilisées</div>
+      <div class="lb-tags" id="lbTags"></div>
+      <div class="lb-cta">
+        <p>Tu veux le même niveau de qualité pour ta marque ?</p>
+        <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn" style="width:100%;justify-content:center;">
+          Réserver un audit gratuit
+          <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Email suivant">
+    <svg aria-hidden="true"><use href="#ic-chevr"/></svg>
+  </button>
+</div>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a href="https://wa.me/261349071329?text=Salut%20Dina%20%21%20J%27ai%20vu%20tes%20r%C3%A9alisations%2C%20j%27aimerais%20parler%20de%20mon%20compte%20Klaviyo." target="_blank" rel="noopener" class="wa-float" aria-label="Discuter sur WhatsApp">
+  <svg aria-hidden="true"><use href="#ic-wa"/></svg>
+  <span class="wa-label">Discuter avec Dina</span>
+</a>
+
+<script>
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Scroll progress + nav border */
+const progressEl = document.getElementById('scrollProgress');
+const topNav = document.getElementById('topNav');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  progressEl.style.setProperty('--p', (scrolled / total * 100) + '%');
+  topNav.classList.toggle('scrolled', scrolled > 12);
+}, { passive: true });
+
+/* Mobile menu */
+const burger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = () => {
+  mobileMenu.hidden = true;
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  burger.setAttribute('aria-label', 'Ouvrir le menu');
+};
+burger.addEventListener('click', () => {
+  const open = mobileMenu.hidden;
+  mobileMenu.hidden = !open;
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !mobileMenu.hidden) closeMenu();
+});
+
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal, .port-item, .sec-tag').forEach(el => io.observe(el));
+
+/* ─── FILTER ─── */
+const items = [...document.querySelectorAll('.port-item')];
+const filterBtns = [...document.querySelectorAll('.filter-btn')];
+
+const updateCounts = () => {
+  document.getElementById('countAll').textContent = items.length;
+  ['flow', 'campagne', 'evenement'].forEach(type => {
+    const count = items.filter(i => i.dataset.type === type).length;
+    const el = document.getElementById('count' + type.charAt(0).toUpperCase() + type.slice(1));
+    if (el) el.textContent = count;
+  });
+};
+updateCounts();
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    items.forEach(item => {
+      const show = filter === 'all' || item.dataset.type === filter;
+      if (!show) {
+        item.classList.add('hiding');
+        setTimeout(() => {
+          item.classList.add('hidden');
+          item.classList.remove('hiding');
+        }, 350);
+      } else {
+        item.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            item.classList.remove('hiding');
+          });
+        });
+      }
+    });
+  });
+});
+
+/* ─── LIGHTBOX ─── */
+const lightbox = document.getElementById('lightbox');
+const lbBackdrop = document.getElementById('lbBackdrop');
+const lbClose = document.getElementById('lbClose');
+const lbImg = document.getElementById('lbImg');
+const lbBrand = document.getElementById('lbBrand');
+const lbIndustry = document.getElementById('lbIndustry');
+const lbType = document.getElementById('lbType');
+const lbStrategy = document.getElementById('lbStrategy');
+const lbTags = document.getElementById('lbTags');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
+const lbScroll = document.getElementById('lbScroll');
+
+let currentIndex = -1;
+let visibleItems = () => items.filter(i => !i.classList.contains('hidden'));
+
+const openLightbox = (item) => {
+  const vis = visibleItems();
+  currentIndex = vis.indexOf(item);
+
+  lbImg.src = item.dataset.img;
+  lbImg.alt = 'Email ' + item.dataset.brand;
+  lbBrand.textContent = item.dataset.brand;
+  lbIndustry.textContent = item.dataset.industry;
+  lbType.textContent = item.dataset.type === 'flow' ? 'Flow' : item.dataset.type === 'campagne' ? 'Campagne' : 'Événement';
+  lbType.dataset.cat = item.dataset.type;
+  lbStrategy.textContent = item.dataset.strategy;
+
+  lbTags.innerHTML = '';
+  item.dataset.tags.split(',').forEach(tag => {
+    const span = document.createElement('span');
+    span.className = 'lb-tag';
+    span.textContent = tag.trim();
+    lbTags.appendChild(span);
+  });
+
+  lbScroll.scrollTop = 0;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  updateNav();
+};
+
+const closeLightbox = () => {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+const navigate = (dir) => {
+  const vis = visibleItems();
+  currentIndex = (currentIndex + dir + vis.length) % vis.length;
+  openLightbox(vis[currentIndex]);
+};
+
+const updateNav = () => {
+  const vis = visibleItems();
+  lbPrev.style.display = vis.length > 1 ? 'flex' : 'none';
+  lbNext.style.display = vis.length > 1 ? 'flex' : 'none';
+};
+
+items.forEach(item => {
+  item.addEventListener('click', () => openLightbox(item));
+  item.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openLightbox(item);
+    }
+  });
+});
+
+lbClose.addEventListener('click', closeLightbox);
+lbBackdrop.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+lbNext.addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+});
+</script>
+
+</body>
+</html>
