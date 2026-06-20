@@ -1081,6 +1081,223 @@
     border: 1px solid rgba(54,244,164,0.18);
   }
 
+  /* ─── ÉTUDES DE CAS · CAPTURES KLAVIYO ─── */
+  .cs { margin-top: 96px; }
+  .cs:first-of-type { margin-top: 0; }
+
+  .cs-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .cs-kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-glow);
+    padding: 5px 11px;
+    border: 1px solid rgba(54,244,164,0.3);
+    border-radius: 9999px;
+    background: rgba(54,244,164,0.08);
+  }
+  .cs-segment {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .cs-title {
+    font-family: var(--display);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 380;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #fff;
+    margin: 6px 0 40px;
+    max-width: 820px;
+  }
+  .cs-title em { font-style: normal; color: var(--accent-glow); }
+
+  .cs-grid {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) minmax(0,1.05fr);
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 920px) {
+    .cs-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  /* narrative — Constat / Intervention / Résultat */
+  .cs-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .cs-step { position: relative; padding-left: 30px; }
+  .cs-step::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0; top: 1px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+  }
+  .cs-step::after {
+    content: "";
+    position: absolute;
+    left: 6px; top: 24px; bottom: -28px;
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .cs-step:last-child::after { display: none; }
+  .cs-step-lbl {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 0 8px;
+  }
+  .cs-step p {
+    color: rgba(255,255,255,0.62);
+    font-size: 15.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .cs-step p strong { color: #fff; font-weight: 550; }
+  .cs-step p em { font-style: normal; color: var(--accent-glow); }
+  .cs-step ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .cs-step li {
+    position: relative;
+    padding-left: 18px;
+    color: rgba(255,255,255,0.62);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .cs-step li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0,168,126,0.15);
+  }
+
+  /* screenshots column */
+  .cs-shots { display: flex; flex-direction: column; gap: 14px; }
+  .cs-shot {
+    margin: 0;
+    background: #141414;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+  }
+  .cs-shot.is-after {
+    border-color: rgba(54,244,164,0.28);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(54,244,164,0.12);
+  }
+  .cs-shot-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .cs-shot-bar span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+  .cs-shot-bar span:first-child { background: #FF605C; }
+  .cs-shot-bar span:nth-child(2) { background: #FFBD44; }
+  .cs-shot-bar span:nth-child(3) { background: #00CA4E; }
+  .cs-when {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .cs-shot.is-after .cs-when { color: var(--accent-glow); }
+  .cs-shot img { width: 100%; height: auto; display: block; }
+  .cs-cap {
+    padding: 11px 15px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .cs-cap strong { color: #fff; font-weight: 600; }
+  .cs-arrow {
+    align-self: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 18px;
+    line-height: 1;
+    margin: -2px 0;
+  }
+
+  /* KPI bar */
+  .cs-kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  @media (max-width: 560px) { .cs-kpis { grid-template-columns: 1fr; gap: 18px; } }
+  .cs-kpi .k-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .cs-kpi .k-val {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.4vw, 28px);
+    font-weight: 380;
+    letter-spacing: -0.02em;
+    color: #fff;
+    line-height: 1.05;
+  }
+  .cs-kpi .k-val em { font-style: normal; color: var(--accent-glow); }
+  .cs-kpi .k-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 6px;
+  }
+
+  .cs-foot {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: rgba(255,255,255,0.42);
+    max-width: 720px;
+  }
+
   /* ─── TESTIMONIALS ─── */
   .testi-section { background: var(--bg-cream); }
   .testi-head { max-width: 760px; margin-bottom: 56px; }
@@ -1681,155 +1898,114 @@
   </div>
 </section>
 
-<!-- ============ DASHBOARDS ============ -->
+<!-- ============ RÉSULTATS · CAPTURES KLAVIYO RÉELLES ============ -->
 <section id="resultats" class="dash-section">
   <div class="container">
-    <span class="sec-tag">Résultats clients</span>
-    <h2 class="h2">Ce que produit un compte <em class="italic-acc">bien tenu.</em></h2>
-    <p class="sec-intro">Aperçu de tableaux de bord que je gère au quotidien pour mes clients. Données anonymisées, représentatives de ce qu'un compte Klaviyo atteint après 90 jours.</p>
+    <span class="sec-tag">Avant / Après</span>
+    <h2 class="h2">Quand l'email se met à <em class="italic-acc">peser dans le chiffre.</em></h2>
+    <p class="sec-intro">Le chiffre que je regarde en premier : la part du CA qui passe par l'email. Deux comptes, avant et après.</p>
 
-    <div class="dash-grid">
+    <!-- ÉTUDE DE CAS 01 -->
+    <article class="cs reveal">
+      <div class="cs-head">
+        <span class="cs-kicker">Étude de cas 01</span>
+        <span class="cs-segment">Marque DTC établie</span>
+      </div>
+      <h3 class="cs-title">L'email passe de <em>17% à 38% du chiffre</em> en 5 mois.</h3>
 
-      <div class="dash-card">
-        <div class="dash-head">
-          <div>
-            <p class="dash-title">Revenu attribué · Email</p>
-            <span class="dash-sub">90 derniers jours · skincare DTC</span>
+      <div class="cs-grid">
+        <div class="cs-steps">
+          <div class="cs-step" data-step="01">
+            <p class="cs-step-lbl">Le constat</p>
+            <p>Un compte qui tournait fort en acquisition payante, mais où l'email était en pilote automatique. <strong>17% du CA</strong>, des flows installés une fois puis jamais retouchés, et aucun calendrier de campagnes.</p>
           </div>
-          <span class="dash-tag">● LIVE</span>
+          <div class="cs-step" data-step="02">
+            <p class="cs-step-lbl">Ce que j'ai mis en place</p>
+            <ul>
+              <li>Refonte des flows core : bienvenue, panier, navigation, post-achat</li>
+              <li>Segmentation par engagement et nettoyage de liste pour la délivrabilité</li>
+              <li>Calendrier de campagnes tenu chaque semaine, testé et ajusté en continu</li>
+            </ul>
+          </div>
+          <div class="cs-step" data-step="03">
+            <p class="cs-step-lbl">Le résultat</p>
+            <p>L'email devient le <strong>premier canal du compte</strong>. La part attribuée passe de 17,3% à <em>37,6% du CA</em>, soit 321 987 € générés contre 31 846 € au départ.</p>
+          </div>
         </div>
-        <div class="big-num"><span class="currency">€</span><span data-counter="418640" data-format="space">0</span></div>
-        <span class="delta">▲ +<span data-counter="42.3" data-decimals="1">0</span>% vs trimestre précédent</span>
 
-        <svg viewBox="0 0 600 180" width="100%" style="margin-top: 8px;" aria-hidden="true">
-          <defs>
-            <linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#36F4A4" stop-opacity="0.4"/>
-              <stop offset="100%" stop-color="#36F4A4" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
-            <line x1="0" y1="40" x2="600" y2="40"/>
-            <line x1="0" y1="90" x2="600" y2="90"/>
-            <line x1="0" y1="140" x2="600" y2="140"/>
-          </g>
-          <g fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="10">
-            <text x="6" y="36">€420k</text>
-            <text x="6" y="86">€280k</text>
-            <text x="6" y="136">€140k</text>
-          </g>
-          <path d="M0,176 L40,169 L80,159 L120,147 L160,134 L200,119 L240,103 L280,89 L320,77 L360,67 L400,59 L440,53 L480,49 L520,45 L560,43 L600,41 L600,180 L0,180 Z" fill="url(#lg1)"/>
-          <path d="M0,176 L40,169 L80,159 L120,147 L160,134 L200,119 L240,103 L280,89 L320,77 L360,67 L400,59 L440,53 L480,49 L520,45 L560,43 L600,41" stroke="#36F4A4" stroke-width="2" fill="none"/>
-          <g font-family="JetBrains Mono" font-size="10" fill="rgba(255,255,255,0.7)">
-            <circle cx="510" cy="14" r="3" fill="#36F4A4"/>
-            <text x="520" y="18">Revenu cumulé</text>
-          </g>
-        </svg>
-
-        <div class="mini-metrics">
-          <div>
-            <div class="mm-lbl">Open rate</div>
-            <div class="mm-val"><span data-counter="52.8" data-decimals="1">0</span>%</div>
-            <div class="mm-delta">+11,4 pts</div>
-          </div>
-          <div>
-            <div class="mm-lbl">Click rate</div>
-            <div class="mm-val"><span data-counter="4.2" data-decimals="1">0</span>%</div>
-            <div class="mm-delta">+0,9 pt</div>
-          </div>
-          <div>
-            <div class="mm-lbl">€ / dest.</div>
-            <div class="mm-val">€<span data-counter="2.14" data-decimals="2">0</span></div>
-            <div class="mm-delta">+€0,73</div>
-          </div>
+        <div class="cs-shots">
+          <figure class="cs-shot is-before">
+            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">Janvier · avant</span></div>
+            <img src="portfolio/resultats-compte1-avant.webp" alt="Tableau de bord Klaviyo, point de départ : 184 275 € de revenu total, 31 846 € attribués à l'email soit 17,3%" loading="lazy" decoding="async" width="1804" height="872" />
+            <figcaption class="cs-cap">184 275 € CA · <strong>31 846 € email (17,3%)</strong></figcaption>
+          </figure>
+          <div class="cs-arrow" aria-hidden="true">&darr;</div>
+          <figure class="cs-shot is-after">
+            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">5 mois après</span></div>
+            <img src="portfolio/resultats-compte1-apres.webp" alt="Tableau de bord Klaviyo, 5 mois après : 857 342 € de revenu total, 321 987 € attribués à l'email soit 37,6%" loading="lazy" decoding="async" width="1804" height="872" />
+            <figcaption class="cs-cap">857 342 € CA · <strong>321 987 € email (37,6%)</strong></figcaption>
+          </figure>
         </div>
       </div>
 
-      <div class="dash-card">
-        <div class="dash-head">
-          <div>
-            <p class="dash-title">Top flows · revenu généré</p>
-            <span class="dash-sub">90 derniers jours · 56% du revenu email</span>
+      <div class="cs-kpis">
+        <div class="cs-kpi"><div class="k-lbl">Part de l'email dans le CA</div><div class="k-val">17,3% <em>&rarr; 37,6%</em></div></div>
+        <div class="cs-kpi"><div class="k-lbl">Revenu attribué email</div><div class="k-val">31,8k € <em>&rarr; 322k €</em></div><div class="k-sub">×10 sur la période</div></div>
+        <div class="cs-kpi"><div class="k-lbl">Fenêtre de gestion</div><div class="k-val">5 mois</div></div>
+      </div>
+    </article>
+
+    <!-- ÉTUDE DE CAS 02 -->
+    <article class="cs reveal">
+      <div class="cs-head">
+        <span class="cs-kicker">Étude de cas 02</span>
+        <span class="cs-segment">Boutique en lancement</span>
+      </div>
+      <h3 class="cs-title">De <em>143 $ à 41 568 $</em> d'email, après les flows core.</h3>
+
+      <div class="cs-grid">
+        <div class="cs-steps">
+          <div class="cs-step" data-step="01">
+            <p class="cs-step-lbl">Le constat</p>
+            <p>Une boutique qui démarrait : <strong>aucun flow actif</strong>, l'email pesait 1,7% du chiffre. Tout le revenu venait d'envois ponctuels et du trafic direct, rien n'était automatisé.</p>
           </div>
-          <span class="dash-tag">12 ACTIFS</span>
+          <div class="cs-step" data-step="02">
+            <p class="cs-step-lbl">Ce que j'ai mis en place</p>
+            <ul>
+              <li>Installation des flows core de zéro : bienvenue, panier abandonné, navigation, post-achat</li>
+              <li>Pop-up de capture pour faire grossir la liste</li>
+              <li>Premières campagnes structurées pour activer et fidéliser la base</li>
+            </ul>
+          </div>
+          <div class="cs-step" data-step="03">
+            <p class="cs-step-lbl">Le résultat</p>
+            <p>L'email devient un <strong>vrai canal de revenu</strong> : <em>16,5% du CA</em> et 41 568 $ générés, sans un euro de pub en plus.</p>
+          </div>
         </div>
 
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Welcome series</div><div class="fbar"><i style="--w: 100%"></i></div><div class="frev">€132,947.35</div></div>
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Abandon panier</div><div class="fbar"><i style="--w: 31%"></i></div><div class="frev">€41,280.60</div></div>
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Browse abandonment</div><div class="fbar"><i style="--w: 18%"></i></div><div class="frev">€23,540.18</div></div>
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Post-achat</div><div class="fbar"><i style="--w: 12%"></i></div><div class="frev">€15,910.42</div></div>
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Winback 60j</div><div class="fbar"><i style="--w: 7%"></i></div><div class="frev">€9,830.75</div></div>
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Replenishment</div><div class="fbar"><i style="--w: 5%"></i></div><div class="frev">€6,120.30</div></div>
-        <div class="flow-row"><div class="fname"><span class="dot-status"></span>Anniversaire</div><div class="fbar"><i style="--w: 3%"></i></div><div class="frev">€3,470.95</div></div>
+        <div class="cs-shots">
+          <figure class="cs-shot is-before">
+            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">Janvier · avant</span></div>
+            <img src="portfolio/resultats-compte2-avant.webp" alt="Tableau de bord Klaviyo, point de départ : 8 462 $ de revenu total, 143 $ attribués à l'email soit 1,7%" loading="lazy" decoding="async" width="1804" height="872" />
+            <figcaption class="cs-cap">8 462 $ CA · <strong>143 $ email (1,7%)</strong></figcaption>
+          </figure>
+          <div class="cs-arrow" aria-hidden="true">&darr;</div>
+          <figure class="cs-shot is-after">
+            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">Après flows core</span></div>
+            <img src="portfolio/resultats-compte2-apres.webp" alt="Tableau de bord Klaviyo, après mise en place des flows core : 251 783 $ de revenu total, 41 568 $ attribués à l'email soit 16,5%" loading="lazy" decoding="async" width="1804" height="872" />
+            <figcaption class="cs-cap">251 783 $ CA · <strong>41 568 $ email (16,5%)</strong></figcaption>
+          </figure>
+        </div>
       </div>
 
-      <div class="dash-row">
-
-        <div class="dash-card">
-          <div class="dash-head">
-            <div>
-              <p class="dash-title">Campagnes récentes</p>
-              <span class="dash-sub">7 derniers jours</span>
-            </div>
-            <span class="dash-tag">TOP PERFORMER</span>
-          </div>
-          <table class="camp-table">
-            <thead>
-              <tr><th>Campagne</th><th>Canal</th><th class="r">Open</th><th class="r">Click</th><th class="r">Revenu</th></tr>
-            </thead>
-            <tbody>
-              <tr><td class="cn">Black Week · J-3</td><td><span class="ch">EMAIL</span></td><td class="r cm">61,2%</td><td class="r cm">5,8%</td><td class="r cm" style="color:#36F4A4">€18 420</td></tr>
-              <tr><td class="cn">Restock · Collection bois</td><td><span class="ch">EMAIL</span></td><td class="r cm">58,4%</td><td class="r cm">4,7%</td><td class="r cm" style="color:#36F4A4">€12 080</td></tr>
-              <tr><td class="cn">Flash sale 24h</td><td><span class="ch">EMAIL</span></td><td class="r cm">59,1%</td><td class="r cm">5,2%</td><td class="r cm" style="color:#36F4A4">€9 340</td></tr>
-              <tr><td class="cn">Édito · L'histoire derrière</td><td><span class="ch">EMAIL</span></td><td class="r cm">54,9%</td><td class="r cm">3,2%</td><td class="r cm" style="color:#36F4A4">€4 770</td></tr>
-              <tr><td class="cn">Welcome · VIP</td><td><span class="ch">EMAIL</span></td><td class="r cm">68,7%</td><td class="r cm">6,4%</td><td class="r cm" style="color:#36F4A4">€3 950</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="dash-card">
-          <div class="dash-head">
-            <div>
-              <p class="dash-title">Liste & santé</p>
-              <span class="dash-sub">90 jours · email</span>
-            </div>
-            <span class="dash-tag warn">SCORE 94/100</span>
-          </div>
-
-          <div class="big-num"><span style="color:#36F4A4">+</span><span data-counter="14287" data-format="space">0</span></div>
-          <span class="delta">▲ +<span data-counter="28.7" data-decimals="1">0</span>% nouveaux abonnés engagés</span>
-
-          <svg viewBox="0 0 600 130" width="100%" style="margin-top: 6px;" aria-hidden="true">
-            <g fill="rgba(255,255,255,0.4)" font-family="JetBrains Mono" font-size="9">
-              <text x="0" y="125">S1</text><text x="80" y="125">S3</text><text x="170" y="125">S5</text><text x="260" y="125">S7</text><text x="350" y="125">S9</text><text x="440" y="125">S11</text><text x="530" y="125">S13</text>
-            </g>
-            <g>
-              <rect x="0"   y="80" width="35" height="30" fill="#1A4032"/>
-              <rect x="45"  y="72" width="35" height="38" fill="#1A4032"/>
-              <rect x="90"  y="65" width="35" height="45" fill="#1F5F47"/>
-              <rect x="135" y="68" width="35" height="42" fill="#1F5F47"/>
-              <rect x="180" y="55" width="35" height="55" fill="#266F54"/>
-              <rect x="225" y="48" width="35" height="62" fill="#266F54"/>
-              <rect x="270" y="42" width="35" height="68" fill="#2D8763"/>
-              <rect x="315" y="38" width="35" height="72" fill="#2D8763"/>
-              <rect x="360" y="30" width="35" height="80" fill="#329A6D"/>
-              <rect x="405" y="24" width="35" height="86" fill="#329A6D"/>
-              <rect x="450" y="18" width="35" height="92" fill="#34A574"/>
-              <rect x="495" y="14" width="35" height="96" fill="#34A574"/>
-              <rect x="540" y="8"  width="35" height="102" fill="#36F4A4"/>
-            </g>
-          </svg>
-
-          <div class="mini-metrics">
-            <div><div class="mm-lbl">Bounce</div><div class="mm-val"><span data-counter="0.3" data-decimals="1">0</span>%</div><div class="mm-delta">−1,1 pt</div></div>
-            <div><div class="mm-lbl">Spam</div><div class="mm-val"><span data-counter="0.02" data-decimals="2">0</span>%</div><div class="mm-delta">Sain</div></div>
-            <div><div class="mm-lbl">Désabo</div><div class="mm-val"><span data-counter="0.18" data-decimals="2">0</span>%</div><div class="mm-delta neg">+0,03 pt</div></div>
-          </div>
-        </div>
-
+      <div class="cs-kpis">
+        <div class="cs-kpi"><div class="k-lbl">Part de l'email dans le CA</div><div class="k-val">1,7% <em>&rarr; 16,5%</em></div></div>
+        <div class="cs-kpi"><div class="k-lbl">Revenu attribué email</div><div class="k-val">143 $ <em>&rarr; 41 568 $</em></div><div class="k-sub">depuis zéro automatisation</div></div>
+        <div class="cs-kpi"><div class="k-lbl">Déclencheur</div><div class="k-val">Flows core</div></div>
       </div>
+    </article>
 
-    </div>
+    <p class="cs-foot">Comptes anonymisés. Le revenu total bouge aussi avec le trafic et la saison, ce que je pilote directement, c'est la part qui passe par l'email.</p>
   </div>
 </section>
 
