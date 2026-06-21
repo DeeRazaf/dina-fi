@@ -1624,6 +1624,84 @@
   }
   @media (max-width: 760px) { .reals-foot { display: flex; } }
 
+  /* ─── LIGHTBOX (aperçu réalisations) ─── */
+  .lb {
+    position: fixed; inset: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    padding: clamp(16px, 4vw, 48px);
+    background: rgba(10,10,10,0.82);
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    opacity: 0; visibility: hidden;
+    transition: opacity .3s var(--ease-out), visibility .3s var(--ease-out);
+  }
+  .lb.open { opacity: 1; visibility: visible; }
+  .lb-dialog {
+    position: relative;
+    width: 100%;
+    max-width: min(540px, 100%);
+    max-height: 100%;
+    transform: translateY(14px) scale(.98);
+    transition: transform .35s var(--ease-out);
+  }
+  .lb.open .lb-dialog { transform: none; }
+  .lb-figure {
+    margin: 0;
+    display: flex; flex-direction: column;
+    max-height: calc(100vh - clamp(32px, 8vw, 96px));
+    background: var(--bg);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow-pop);
+  }
+  .lb-img-wrap {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: var(--bg-soft);
+  }
+  .lb-img-wrap img { width: 100%; height: auto; display: block; }
+  .lb-cap {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 14px;
+    border-top: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .lb-cap-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .lb-cap-brand {
+    font-family: var(--display);
+    font-size: 15px; font-weight: 550;
+    letter-spacing: -0.01em; color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .lb-cap-industry { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+  .lb-counter { font-family: var(--mono); font-size: 11px; color: var(--muted-2); letter-spacing: 0.06em; flex-shrink: 0; }
+  .lb-nav {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--bg); color: var(--ink);
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s var(--ease-out), color .2s var(--ease-out), border-color .2s var(--ease-out);
+  }
+  .lb-nav:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .lb-nav:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lb-close {
+    position: absolute; top: -16px; right: -16px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--ink); color: #fff; border: 0;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-hover);
+    transition: transform .2s var(--ease-out);
+    z-index: 1;
+  }
+  .lb-close:hover { transform: rotate(90deg); }
+  .lb-close:focus-visible { outline: 2px solid var(--accent-glow); outline-offset: 2px; }
+  @media (max-width: 560px) {
+    .lb-close { top: -10px; right: -6px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -1722,7 +1800,7 @@
         <div class="lbl">De revenu email en plus</div>
       </div>
       <div>
-        <div class="num" data-counter="42">0</div>
+        <div class="num" data-counter="32">0</div>
         <div class="lbl">Comptes Klaviyo</div>
       </div>
       <div>
@@ -1739,13 +1817,13 @@
     <div class="marquee-item">Géré <em>chaque mois</em></div>
     <div class="marquee-item"><em>+30%</em> de revenu email</div>
     <div class="marquee-item">Partenaire <em>dédié</em></div>
-    <div class="marquee-item">42 marques DTC</div>
+    <div class="marquee-item">32 marques DTC</div>
     <div class="marquee-item">Audit <em>gratuit</em></div>
     <div class="marquee-item">Setup en <em>7 jours</em></div>
     <div class="marquee-item" aria-hidden="true">Géré <em>chaque mois</em></div>
     <div class="marquee-item" aria-hidden="true"><em>+30%</em> de revenu email</div>
     <div class="marquee-item" aria-hidden="true">Partenaire <em>dédié</em></div>
-    <div class="marquee-item" aria-hidden="true">42 marques DTC</div>
+    <div class="marquee-item" aria-hidden="true">32 marques DTC</div>
     <div class="marquee-item" aria-hidden="true">Audit <em>gratuit</em></div>
     <div class="marquee-item" aria-hidden="true">Setup en <em>7 jours</em></div>
   </div>
@@ -1820,8 +1898,8 @@
       <article class="service">
         <span class="num">/ 01</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
-        <h3>Audit <em>continu</em></h3>
-        <p>Je surveille ton compte chaque semaine. Performance des flows, qualité de la liste, signaux de désengagement. Je corrige avant que ça pose problème.</p>
+        <h3>Ton compte sous <em>surveillance</em></h3>
+        <p>Je surveille ton Klaviyo chaque semaine et je corrige avant que ça te coûte : flows qui décrochent, liste qui fatigue, signaux de désengagement. Tu n'as jamais de mauvaise surprise.</p>
         <ul>
           <li>Suivi hebdomadaire</li>
           <li>Nettoyage de liste</li>
@@ -1833,8 +1911,8 @@
       <article class="service">
         <span class="num">/ 02</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg>
-        <h3>Flows</h3>
-        <p>Je crée et j'optimise les flows qui font tourner ton revenu en arrière-plan : bienvenue, panier oublié, après l'achat, retour client.</p>
+        <h3>Des automatismes qui <em>vendent</em> en continu</h3>
+        <p>Bienvenue, panier oublié, post-achat, winback. Je crée et j'optimise les séquences qui rapportent en arrière-plan, jour et nuit, sans que tu aies à y penser.</p>
         <ul>
           <li>Tous les flows clés</li>
           <li>A/B tests en continu</li>
@@ -1846,8 +1924,8 @@
       <article class="service">
         <span class="num">/ 03</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <h3>Campagnes & <em>newsletters</em></h3>
-        <p>8 à 16 campagnes par mois, voire plus, rédigées, designées, segmentées, programmées.</p>
+        <h3>Un calendrier qui fait <em>acheter</em></h3>
+        <p>8 à 16 campagnes par mois, pensées pour convertir, pas juste pour remplir des boîtes de réception. Rédigées, designées, segmentées et programmées.</p>
         <ul>
           <li>Calendrier éditorial mensuel</li>
           <li>Rédaction et design</li>
@@ -1859,8 +1937,8 @@
       <article class="service">
         <span class="num">/ 04</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
-        <h3>Événements <em>spéciaux</em></h3>
-        <p>Soldes, Black Friday, lancements produits, anniversaires de marque… Stratégie sur-mesure pour tes gros moments, pour qu'ils rapportent vraiment.</p>
+        <h3>Tes gros moments, <em>maximisés</em></h3>
+        <p>Black Friday, soldes, lancements produits, anniversaires de marque. Je construis la stratégie pour que tes temps forts rapportent vraiment, au lieu de passer inaperçus.</p>
         <ul>
           <li>Black Friday & soldes</li>
           <li>Lancements produits</li>
@@ -1872,10 +1950,11 @@
       <article class="service">
         <span class="num">/ 05</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <h3>Santé de la <em>boîte mail</em></h3>
-        <p>Je m'assure que tes emails arrivent bien en boîte principale, pas en spam. Réputation, taux de plainte. Tout est suivi.</p>
+        <h3>Tes emails en <em>boîte principale</em></h3>
+        <p>Réputation d'expéditeur, authentification technique, nettoyage de liste. Tout est suivi pour que tu atterrisses en inbox, pas dans les spams ni l'onglet Promotions.</p>
         <ul>
           <li>Suivi de la réputation</li>
+          <li>Authentification SPF · DKIM · DMARC</li>
           <li>Nettoyage de liste régulier</li>
           <li>Alerte en cas de souci</li>
         </ul>
@@ -1884,8 +1963,8 @@
       <article class="service">
         <span class="num">/ 06</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>
-        <h3>Reporting <em>mensuel</em></h3>
-        <p>Un rapport clair en début de mois : revenu généré, performance des flows, top campagnes, ce qui marche, ce qu'on change.</p>
+        <h3>Tu sais exactement <em>ce que ça rapporte</em></h3>
+        <p>Chaque début de mois, un rapport clair : revenu généré, performance des flows, top campagnes, ce qu'on garde et ce qu'on change. Fini les décisions au feeling.</p>
         <ul>
           <li>Revenu attribué détaillé</li>
           <li>Comparaison vs mois précédent</li>
@@ -2085,7 +2164,7 @@
     <div class="testi-head">
       <span class="sec-tag">Avis clients</span>
       <h2 class="h2">Ce que disent les marques <em class="italic-acc">que je gère.</em></h2>
-      <p class="lede">Trois ans, 42 comptes Klaviyo, et une obsession : être le meilleur euro investi de ton stack marketing.</p>
+      <p class="lede">Trois ans, 32 comptes Klaviyo, et une obsession : être le meilleur euro investi de ton stack marketing.</p>
     </div>
 
     <div class="testi-grid">
@@ -2216,6 +2295,33 @@
   <span class="wa-label">Discuter avec Dina</span>
 </a>
 
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu de l'email" aria-hidden="true">
+  <div class="lb-dialog">
+    <button type="button" class="lb-close" id="lbClose" aria-label="Fermer l'aperçu">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    </button>
+    <figure class="lb-figure">
+      <div class="lb-img-wrap">
+        <img id="lbImg" src="" alt="" />
+      </div>
+      <figcaption class="lb-cap">
+        <button type="button" class="lb-nav lb-prev" id="lbPrev" aria-label="Email précédent">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+        <span class="lb-cap-text">
+          <span class="lb-cap-brand" id="lbBrand"></span>
+          <span class="lb-cap-industry" id="lbIndustry"></span>
+        </span>
+        <span class="lb-counter" id="lbCounter"></span>
+        <button type="button" class="lb-nav lb-next" id="lbNext" aria-label="Email suivant">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
 <script>
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -2304,6 +2410,78 @@ const counterIO = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('[data-counter]').forEach(c => counterIO.observe(c));
+
+/* Lightbox aperçu réalisations */
+const lbTriggers = Array.from(document.querySelectorAll('#realisations-preview .reals-card'));
+if (lbTriggers.length) {
+  const items = lbTriggers.map(card => {
+    const img = card.querySelector('img');
+    const type = card.querySelector('.reals-type');
+    return {
+      src: img ? img.getAttribute('src') : '',
+      alt: img ? (img.getAttribute('alt') || '') : '',
+      brand: (card.querySelector('.reals-brand')?.textContent || '').trim(),
+      type: (type?.textContent || '').trim(),
+      industry: (card.querySelector('.reals-industry')?.textContent || '').trim(),
+    };
+  });
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbBrand = document.getElementById('lbBrand');
+  const lbIndustry = document.getElementById('lbIndustry');
+  const lbCounter = document.getElementById('lbCounter');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const lbWrap = lb.querySelector('.lb-img-wrap');
+  const single = items.length < 2;
+  lbPrev.hidden = lbNext.hidden = single;
+  let current = 0;
+  let lastFocus = null;
+
+  const render = (i) => {
+    const it = items[i];
+    lbImg.src = it.src;
+    lbImg.alt = it.alt;
+    lbBrand.textContent = it.type ? it.brand + ' · ' + it.type : it.brand;
+    lbIndustry.textContent = it.industry;
+    lbCounter.textContent = single ? '' : (i + 1) + ' / ' + items.length;
+    lbWrap.scrollTop = 0;
+  };
+  const openLb = (i) => {
+    current = i;
+    lastFocus = document.activeElement;
+    render(i);
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  };
+  const closeLb = () => {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  };
+  const go = (dir) => {
+    current = (current + dir + items.length) % items.length;
+    render(current);
+  };
+
+  lbTriggers.forEach((card, i) => {
+    card.addEventListener('click', (e) => { e.preventDefault(); openLb(i); });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lbPrev.addEventListener('click', () => go(-1));
+  lbNext.addEventListener('click', () => go(1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (!single && e.key === 'ArrowLeft') go(-1);
+    else if (!single && e.key === 'ArrowRight') go(1);
+  });
+}
 </script>
 
 </body>
