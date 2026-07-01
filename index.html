@@ -9,14 +9,14 @@
 <link rel="canonical" href="https://deerazaf.github.io/dina-fi/" />
 <meta name="theme-color" content="#FFFFFF" />
 
-<!-- Aperçu de lien (WhatsApp, LinkedIn, iMessage…). Conseil : remplace og:image par une image dédiée 1200×630 quand Hero.webp sera upscalée -->
+<!-- Aperçu de lien (WhatsApp, LinkedIn, iMessage…). og:image dédié 1200×630 recadré depuis Hero.webp -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://deerazaf.github.io/dina-fi/" />
 <meta property="og:title" content="Dina · Klaviyo Manager · Ton Klaviyo géré pour toi chaque mois" />
 <meta property="og:description" content="Klaviyo Manager dédié pour marques DTC. Setup en 7 jours, puis gestion mensuelle complète : campagnes, flows, événements, suivi." />
 <meta property="og:image" content="https://deerazaf.github.io/dina-fi/Hero-og.jpg" />
-<meta property="og:image:width" content="558" />
-<meta property="og:image:height" content="447" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:locale" content="fr_FR" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Dina · Klaviyo Manager" />
@@ -235,6 +235,8 @@
   }
   .btn .arrow { transition: transform 240ms var(--ease-out); }
   .btn:hover .arrow { transform: translateX(3px); }
+  /* Feedback tactile au clic : le bouton s'enfonce légèrement (100-160ms = plage Emil Kowalski) */
+  .btn:active { transform: translateY(0) scale(.97); box-shadow: none; transition-duration: 130ms; }
   .btn-ghost {
     background: transparent;
     color: var(--ink);
@@ -332,7 +334,7 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 42px; height: 42px;
+    width: 44px; height: 44px;
     padding: 0;
     background: transparent;
     border: 0;
@@ -367,7 +369,7 @@
 
   @media (max-width: 860px) {
     .navlinks { gap: 12px; }
-    .navlinks .btn { padding: 10px 14px; font-size: 13px; }
+    .navlinks .btn { padding: 10px 16px; font-size: 13px; min-height: 44px; }
     .nav-burger { display: flex; }
   }
 
@@ -1459,6 +1461,10 @@
     color: var(--ink-soft);
     transition: color .2s ease;
   }
+  @media (max-width: 760px) {
+    .foot-links { gap: 16px 28px; }
+    .foot-links a { padding: 11px 0; }
+  }
   .foot-links a:hover { color: var(--accent-deep); }
 
   /* ─── WHATSAPP FLOAT ─── */
@@ -1554,6 +1560,7 @@
     border-color: var(--ink);
   }
   .reals-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .reals-card:active { transform: translateY(-2px) scale(.995); transition-duration: 120ms; }
 
   .reals-dots {
     display: flex;
@@ -1786,7 +1793,7 @@
       </div>
 
       <div class="hero-visual">
-        <img src="Hero.webp" alt="Dina, ton Klaviyo Manager" class="hero-img" width="558" height="447" fetchpriority="high" decoding="async" />
+        <img src="Hero.webp" alt="Dina, ton Klaviyo Manager" class="hero-img" width="1400" height="1167" fetchpriority="high" decoding="async" />
       </div>
     </div>
 
@@ -1804,7 +1811,7 @@
         <div class="lbl">Comptes Klaviyo</div>
       </div>
       <div>
-        <div class="num" data-counter="3" data-suffix=" ans">0 <em>ans</em></div>
+        <div class="num" data-counter="2" data-suffix=" ans" data-prefix="+">+0 <em>ans</em></div>
         <div class="lbl">À temps plein sur Klaviyo</div>
       </div>
     </div>
@@ -2164,7 +2171,7 @@
     <div class="testi-head">
       <span class="sec-tag">Avis clients</span>
       <h2 class="h2">Ce que disent les marques <em class="italic-acc">que je gère.</em></h2>
-      <p class="lede">Trois ans, 32 comptes Klaviyo, et une obsession : être le meilleur euro investi de ton stack marketing.</p>
+      <p class="lede">Deux ans, 32 comptes Klaviyo, et une obsession : être le meilleur euro investi de ton stack marketing.</p>
     </div>
 
     <div class="testi-grid">
@@ -2360,12 +2367,32 @@ document.addEventListener('keydown', (e) => {
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
+      /* Stagger : les éléments d'une même grille apparaissent en cascade.
+         Le délai est retiré après coup pour ne pas ralentir le hover. */
+      const step = parseInt(e.target.dataset.stagger || '0', 10);
+      if (step && !reduceMotion) {
+        e.target.style.transitionDelay = (step * 60) + 'ms';
+        e.target.addEventListener('transitionend', () => {
+          e.target.style.transitionDelay = '';
+        }, { once: true });
+      }
       e.target.classList.add('in');
       io.unobserve(e.target);
     }
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal, .service, .testi, .dash-card, .sec-tag').forEach(el => io.observe(el));
+const revealEls = document.querySelectorAll('.reveal, .service, .testi, .dash-card, .sec-tag');
+/* Attribue un index de cascade aux éléments voisins d'un même conteneur */
+const revealGroups = new Map();
+revealEls.forEach(el => {
+  const parent = el.parentElement;
+  if (!revealGroups.has(parent)) revealGroups.set(parent, []);
+  revealGroups.get(parent).push(el);
+});
+revealGroups.forEach(list => {
+  if (list.length > 1) list.forEach((el, i) => { if (i) el.dataset.stagger = i; });
+});
+revealEls.forEach(el => io.observe(el));
 
 /* Compteurs animés */
 const formatVal = (el, val) => {
