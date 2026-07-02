@@ -382,7 +382,7 @@
   /* Hero premium minimaliste : voile neutre à peine teinté + grille hairline qui se dissout en dégradé (validé Dina 2026-07-02) */
   .hero {
     position: relative;
-    padding: clamp(48px, 8vw, 104px) 0 clamp(64px, 8vw, 100px);
+    padding: clamp(48px, 8vw, 104px) 0 0;
     overflow: hidden;
     background:
       radial-gradient(ellipse 1200px 780px at 75% -10%, #F1F4F2, transparent 68%),
@@ -399,8 +399,7 @@
     -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.22) 62%, transparent 88%);
     pointer-events: none;
   }
-  .hero .cta-note,
-  .hero-foot .lbl { color: #5F6167; }
+  .hero .cta-note { color: #5F6167; }
   /* pas de z-index ici : il créerait un stacking context qui casserait le mix-blend-mode du hero-img */
 
   .meta-line {
@@ -435,10 +434,14 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
     gap: 24px;
     align-items: center;
-    margin-bottom: 80px;
   }
   @media (max-width: 980px) {
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  @media (min-width: 981px) {
+    /* photo posée sur le marquee, le texte garde son air */
+    .hero-grid > div:first-child { padding-bottom: 56px; }
+    .hero-visual { align-self: end; }
   }
   .hero-grid > div:first-child { position: relative; z-index: 1; }
   .hero h1 {
@@ -484,48 +487,6 @@
     .hero-img { width: 100%; }
   }
 
-  /* Hero — bandeau factuel : chiffre et label sur la même ligne de base, séparés par des filets */
-  .hero-foot {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    border-top: 1px solid var(--line);
-  }
-  @media (min-width: 761px) {
-    .hero-foot { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .hero-foot > div + div { border-left: 1px solid var(--line); }
-  }
-  .hero-foot > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 6px;
-    padding: 24px clamp(16px, 2.5vw, 32px) 4px;
-  }
-  .hero-foot > div:first-child { padding-left: 0; }
-  @media (max-width: 760px) {
-    .hero-foot > div { padding: 20px 16px 4px 0; }
-    .hero-foot > div:nth-child(even) { border-left: 1px solid var(--line); padding-left: 16px; padding-right: 0; }
-  }
-  .hero-foot .num {
-    font-family: var(--display);
-    font-size: clamp(24px, 2.6vw, 32px);
-    font-weight: 550;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .hero-foot .num em {
-    font-style: normal;
-    color: var(--accent-deep);
-    font-size: 0.72em;
-  }
-  .hero-foot .lbl {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.35;
-  }
-
   /* ─── MARQUEE ─── */
   .marquee {
     background: var(--bg-dark);
@@ -537,7 +498,7 @@
   .marquee-track {
     display: flex;
     white-space: nowrap;
-    animation: scroll 40s linear infinite;
+    animation: scroll 20s linear infinite;
     will-change: transform;
   }
   .marquee-item {
@@ -810,24 +771,16 @@
     color: var(--accent-deep);
     font-weight: 600;
   }
-  .service p {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    color: var(--ink-soft);
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0 0 18px;
-    max-width: 62ch;
-  }
   .service ul {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 1 / 4;
+    align-content: center;
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 32px;
   }
   .service li {
     font-size: 14px;
@@ -841,11 +794,38 @@
     width: 14px; height: 1px;
     background: var(--accent);
   }
+  /* Desktop : la typo porte le franc-parler, le filet vertical structure la rangée */
+  @media (min-width: 761px) {
+    .service {
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.45fr);
+      column-gap: clamp(24px, 4vw, 56px);
+      padding: clamp(32px, 4.5vw, 56px) 0;
+    }
+    .service .icon { width: 30px; height: 30px; margin-bottom: 18px; }
+    .service h3 {
+      font-size: clamp(24px, 2.7vw, 33px);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+    .service ul {
+      border-left: 1px solid var(--line);
+      padding-left: clamp(28px, 3.5vw, 48px);
+      gap: 14px 32px;
+      transition: border-color .3s var(--ease-out);
+    }
+    .service li { font-size: 15px; }
+    .service li::before { width: 16px; transform-origin: left center; transition: transform .35s var(--ease-out); }
+  }
+  @media (min-width: 761px) and (hover: hover) {
+    .service:hover { background: linear-gradient(90deg, rgba(0,168,126,0.05), rgba(0,168,126,0) 58%); }
+    .service:hover ul { border-color: rgba(0,168,126,0.4); }
+    .service:hover li::before { transform: scaleX(1.6); }
+  }
   @media (max-width: 760px) {
     .service { display: block; }
     .service .icon { margin-bottom: 12px; }
-    .service h3 { max-width: none; margin-bottom: 10px; }
-    .service p { margin-bottom: 14px; }
+    .service h3 { max-width: none; margin-bottom: 14px; }
+    .service ul { grid-template-columns: 1fr; gap: 10px; align-content: start; }
   }
 
   /* ─── DASHBOARDS ─── */
@@ -1702,8 +1682,8 @@
     section { padding: 64px 0; }
     section.tight { padding: 48px 0; }
     .sec-tag { margin-bottom: 20px; }
-    .hero { padding: 40px 0 56px; }
-    .hero-grid { gap: 36px; margin-bottom: 48px; }
+    .hero { padding: 40px 0 0; }
+    .hero-grid { gap: 36px; }
     .hero h1 { margin-bottom: 20px; }
     .hero .lede { margin-bottom: 28px; }
     .week-head { margin-bottom: 40px; }
@@ -1839,20 +1819,6 @@
       </div>
     </div>
 
-    <div class="hero-foot reveal">
-      <div>
-        <div class="num" data-counter="30" data-suffix="%" data-prefix="+">+0<em>%</em></div>
-        <div class="lbl">De revenu email en plus</div>
-      </div>
-      <div>
-        <div class="num" data-counter="32">0</div>
-        <div class="lbl">Comptes Klaviyo</div>
-      </div>
-      <div>
-        <div class="num" data-counter="2" data-suffix=" ans" data-prefix="+">+0 <em>ans</em></div>
-        <div class="lbl">À temps plein sur Klaviyo</div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1942,7 +1908,6 @@
       <article class="service">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
         <h3>Ton compte suivi <em>chaque semaine</em></h3>
-        <p>Je surveille ton Klaviyo chaque semaine et je corrige avant que ça te coûte : flows qui décrochent, liste qui fatigue, signaux de désengagement. Tu n'as jamais de mauvaise surprise.</p>
         <ul>
           <li>Suivi hebdomadaire</li>
           <li>Nettoyage de liste</li>
@@ -1954,9 +1919,8 @@
       <article class="service">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg>
         <h3>Des flows qui <em>vendent</em> en continu</h3>
-        <p>Bienvenue, panier oublié, post-achat, winback. Je crée et j'optimise les séquences qui rapportent en arrière-plan, jour et nuit, sans que tu aies à y penser.</p>
         <ul>
-          <li>Tous les flows clés</li>
+          <li>Bienvenue, panier oublié, post-achat, winback</li>
           <li>A/B tests en continu</li>
           <li>Optimisation des séquences</li>
           <li>Améliorations chaque mois</li>
@@ -1966,9 +1930,8 @@
       <article class="service">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <h3>Des campagnes qui <em>convertissent</em></h3>
-        <p>8 à 16 campagnes par mois, pensées pour convertir, pas juste pour remplir des boîtes de réception. Rédigées, designées, segmentées et programmées.</p>
         <ul>
-          <li>Calendrier éditorial mensuel</li>
+          <li>8 à 16 campagnes par mois</li>
           <li>Rédaction et design</li>
           <li>Segmentation fine</li>
           <li>A/B tests sur chaque envoi</li>
@@ -1978,7 +1941,6 @@
       <article class="service">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
         <h3>Tes temps forts, <em>rentabilisés</em></h3>
-        <p>Black Friday, soldes, lancements produits, anniversaires de marque. Je construis la stratégie pour que tes temps forts rapportent vraiment, au lieu de passer inaperçus.</p>
         <ul>
           <li>Black Friday & soldes</li>
           <li>Lancements produits</li>
@@ -1990,7 +1952,6 @@
       <article class="service">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>Tes emails en <em>boîte principale</em></h3>
-        <p>Réputation d'expéditeur, authentification technique, nettoyage de liste. Tout est suivi pour que tu atterrisses en inbox, pas dans les spams ni l'onglet Promotions.</p>
         <ul>
           <li>Suivi de la réputation</li>
           <li>Authentification SPF · DKIM · DMARC</li>
@@ -2002,9 +1963,8 @@
       <article class="service">
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>
         <h3>Tu sais exactement <em>ce que ça rapporte</em></h3>
-        <p>Chaque début de mois, un rapport clair : revenu généré, performance des flows, top campagnes, ce qu'on garde et ce qu'on change. Fini les décisions au feeling.</p>
         <ul>
-          <li>Revenu attribué détaillé</li>
+          <li>Rapport mensuel : revenu attribué détaillé</li>
           <li>Comparaison vs mois précédent</li>
           <li>Recommandations pour le mois</li>
           <li>Appel de débrief mensuel</li>
@@ -2428,50 +2388,6 @@ revealGroups.forEach(list => {
   if (list.length > 1) list.forEach((el, i) => { if (i) el.dataset.stagger = i; });
 });
 revealEls.forEach(el => io.observe(el));
-
-/* Compteurs animés */
-const formatVal = (el, val) => {
-  const decimals = parseInt(el.dataset.decimals || '0', 10);
-  let str = decimals ? val.toFixed(decimals).replace('.', ',') : Math.round(val).toString();
-  if (el.dataset.format === 'space') str = Math.round(val).toLocaleString('fr-FR').replace(/\u202F|\u00A0/g, ' ');
-  return str;
-};
-const renderVal = (el, str, emHTML) => {
-  const prefix = el.dataset.prefix || '';
-  const suffix = el.dataset.suffix || '';
-  if (emHTML) {
-    el.innerHTML = prefix + str + (suffix.startsWith(' ') ? ' ' : '') + emHTML;
-  } else {
-    el.textContent = prefix + str + suffix;
-  }
-};
-const animateNum = (el) => {
-  const target = parseFloat(el.dataset.counter);
-  const richEm = el.querySelector('em');
-  const emHTML = richEm ? richEm.outerHTML : '';
-  if (reduceMotion) {
-    renderVal(el, formatVal(el, target), emHTML);
-    return;
-  }
-  const duration = 1800;
-  const start = performance.now();
-  const tick = (now) => {
-    const t = Math.min((now - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - t, 3);
-    renderVal(el, formatVal(el, target * eased), emHTML);
-    if (t < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-};
-const counterIO = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      animateNum(e.target);
-      counterIO.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.5 });
-document.querySelectorAll('[data-counter]').forEach(c => counterIO.observe(c));
 
 /* Lightbox aperçu réalisations */
 const lbTriggers = Array.from(document.querySelectorAll('#realisations-preview .reals-card'));
