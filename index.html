@@ -27,8 +27,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Polices variables : les graisses 350/380/480/550 du design existent maintenant vraiment (avant elles étaient arrondies à 300/400/500) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+<!-- Display : Bricolage Grotesque variable (opsz + wght). Body : Inter. Mono : réservé aux données Klaviyo. -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -72,7 +72,7 @@
     --accent-glow: #36F4A4;
 
     /* Type stacks */
-    --display: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+    --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
     --sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
     --mono:    "JetBrains Mono", ui-monospace, monospace;
 
@@ -132,7 +132,7 @@
   /* Lien d'évitement (accessibilité clavier) */
   .skip-link {
     position: fixed;
-    left: 16px; top: -56px;
+    left: 16px; top: 12px;
     z-index: 200;
     padding: 12px 20px;
     background: var(--ink);
@@ -141,34 +141,38 @@
     font-family: var(--display);
     font-size: 14px;
     font-weight: 500;
-    transition: top .2s var(--ease-out);
+    transform: translateY(-80px);
+    transition: transform .2s var(--ease-out);
   }
-  .skip-link:focus { top: 12px; }
+  .skip-link:focus { transform: translateY(0); }
 
   .container { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
 
-  /* ─── TYPOGRAPHY (Shopify-inspired, light edition) ─── */
+  /* ─── TYPOGRAPHY — Bricolage Grotesque, tracking détendu (la police a déjà du caractère) ─── */
   .display {
     font-family: var(--display);
-    font-weight: 350;
+    font-weight: 400;
     font-size: clamp(34px, 4.5vw, 58px);
-    line-height: 1.02;
-    letter-spacing: -0.03em;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
     color: var(--ink);
+    text-wrap: balance;
   }
   .h2 {
     font-family: var(--display);
-    font-weight: 380;
-    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 400;
+    font-size: clamp(30px, 4.2vw, 52px);
     line-height: 1.08;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
   }
   .h3 {
     font-family: var(--display);
-    font-weight: 480;
+    font-weight: 500;
     font-size: clamp(22px, 2.4vw, 28px);
     line-height: 1.2;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.008em;
+    text-wrap: balance;
   }
   .lede {
     font-size: clamp(18px, 1.8vw, 22px);
@@ -176,35 +180,35 @@
     color: var(--ink-soft);
     font-weight: 400;
   }
+  /* Mots accentués : vert + graisse, pas de fausse italique (Bricolage n'en a pas) */
   em.italic-acc {
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 350;
+    font-style: normal;
+    color: var(--accent-deep);
+    font-weight: 600;
   }
 
-  /* ─── SECTION TAG ─── */
+  /* ─── SECTION TAG — label posé sur le filet de section (fini le pill mono uppercase) ─── */
   .sec-tag {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    padding: 8px 14px;
-    border: 1px solid var(--line);
-    border-radius: 9999px;
-    background: var(--bg);
+    gap: 16px;
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 550;
+    color: var(--ink);
     margin-bottom: 32px;
   }
   .sec-tag::before {
     content: "";
-    width: 6px; height: 6px;
-    border-radius: 50%;
+    flex-shrink: 0;
+    width: 10px; height: 10px;
     background: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .sec-tag::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
   }
 
   /* ─── BUTTONS (Pill, Shopify-style) ─── */
@@ -281,8 +285,9 @@
     content: "";
     display: block; height: 100%;
     background: var(--accent);
-    width: var(--p, 0%);
-    transition: width .1s linear;
+    transform: scaleX(var(--p, 0));
+    transform-origin: left;
+    transition: transform .1s linear;
   }
 
   /* ─── NAV ─── */
@@ -303,7 +308,7 @@
     font-family: var(--display);
     font-weight: 600;
     font-size: 22px;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.01em;
     display: flex; align-items: baseline; gap: 2px;
     color: var(--ink);
   }
@@ -374,44 +379,39 @@
   }
 
   /* ─── HERO ─── */
+  /* Hero premium minimaliste : voile neutre à peine teinté + grille hairline qui se dissout en dégradé (validé Dina 2026-07-02) */
   .hero {
     position: relative;
-    padding: clamp(64px, 10vw, 120px) 0 clamp(64px, 8vw, 100px);
+    padding: clamp(48px, 8vw, 104px) 0 clamp(64px, 8vw, 100px);
     overflow: hidden;
     background:
-      radial-gradient(ellipse 800px 500px at 20% 10%, var(--bg-tint), transparent 70%),
-      radial-gradient(ellipse 600px 400px at 90% 90%, var(--accent-soft), transparent 60%),
-      var(--bg);
+      radial-gradient(ellipse 1200px 780px at 75% -10%, #F1F4F2, transparent 68%),
+      #FFFFFF;
   }
   .hero::before {
     content: "";
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(to right, rgba(10,10,10,0.025) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(10,10,10,0.025) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 30%, black 30%, transparent 70%);
+      linear-gradient(to right, rgba(10, 10, 10, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10, 10, 10, 0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.22) 62%, transparent 88%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.55) 35%, rgba(0,0,0,0.22) 62%, transparent 88%);
     pointer-events: none;
   }
-  .hero .container { position: relative; z-index: 1; }
+  .hero .cta-note,
+  .hero-foot .lbl { color: #5F6167; }
+  /* pas de z-index ici : il créerait un stacking context qui casserait le mix-blend-mode du hero-img */
 
   .meta-line {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-family: var(--mono);
-    font-size: 12px;
+    font-family: var(--display);
+    font-size: 15px;
     font-weight: 500;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    background: rgba(255,255,255,0.7);
-    border: 1px solid var(--line);
-    border-radius: 9999px;
-    margin-bottom: 40px;
-    backdrop-filter: blur(8px);
+    color: var(--ink-soft);
+    margin-bottom: 36px;
   }
   .live {
     display: inline-block;
@@ -432,7 +432,7 @@
 
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
     gap: 24px;
     align-items: center;
     margin-bottom: 80px;
@@ -440,6 +440,7 @@
   @media (max-width: 980px) {
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
   }
+  .hero-grid > div:first-child { position: relative; z-index: 1; }
   .hero h1 {
     margin: 0 0 28px;
   }
@@ -466,13 +467,14 @@
     align-items: center;
   }
   .hero-img {
-    width: 115%;
+    width: 108%;
     max-width: none;
     height: auto;
     display: block;
     object-fit: contain;
     margin: 0 auto;
     image-rendering: -webkit-optimize-contrast;
+    mix-blend-mode: multiply; /* le fond blanc du webp disparaît sur l'aplat vert */
     transition: transform .5s var(--ease-out);
   }
   .hero-img:hover {
@@ -482,37 +484,46 @@
     .hero-img { width: 100%; }
   }
 
-  /* Hero stats */
+  /* Hero — bandeau factuel : chiffre et label sur la même ligne de base, séparés par des filets */
   .hero-foot {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    padding-top: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
     border-top: 1px solid var(--line);
   }
+  @media (min-width: 761px) {
+    .hero-foot { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .hero-foot > div + div { border-left: 1px solid var(--line); }
+  }
+  .hero-foot > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 24px clamp(16px, 2.5vw, 32px) 4px;
+  }
+  .hero-foot > div:first-child { padding-left: 0; }
   @media (max-width: 760px) {
-    .hero-foot { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .hero-foot > div { padding: 20px 16px 4px 0; }
+    .hero-foot > div:nth-child(even) { border-left: 1px solid var(--line); padding-left: 16px; padding-right: 0; }
   }
   .hero-foot .num {
     font-family: var(--display);
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 380;
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 550;
     line-height: 1;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.01em;
     color: var(--ink);
-    margin-bottom: 8px;
   }
   .hero-foot .num em {
     font-style: normal;
-    color: var(--accent);
-    font-size: 0.7em;
+    color: var(--accent-deep);
+    font-size: 0.72em;
   }
   .hero-foot .lbl {
-    font-family: var(--mono);
-    font-size: 11px;
+    font-size: 14px;
     color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    line-height: 1.35;
   }
 
   /* ─── MARQUEE ─── */
@@ -545,9 +556,9 @@
     border-radius: 50%;
   }
   .marquee-item em {
-    font-style: italic;
+    font-style: normal;
     color: var(--accent-glow);
-    font-weight: 400;
+    font-weight: 550;
   }
   @keyframes scroll {
     0%   { transform: translateX(0); }
@@ -555,28 +566,22 @@
   }
 
   /* ─── SECTION HEADER ─── */
-  section { padding: clamp(72px, 10vw, 140px) 0; }
-  section.tight { padding: clamp(56px, 8vw, 100px) 0; }
+  section { padding: clamp(64px, 8vw, 112px) 0; }
+  section.tight { padding: clamp(48px, 7vw, 88px) 0; }
   .week-section { background: var(--bg-soft); }
 
   .week-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    gap: 64px;
-    margin-bottom: 72px;
-    align-items: end;
-  }
-  @media (max-width: 860px) {
-    .week-head { grid-template-columns: 1fr; gap: 24px; }
+    max-width: 900px;
+    margin-bottom: 56px;
   }
 
     /* ─── SEVEN-DAYS BLOCK ─── */
   .seven-block {
     display: grid;
     grid-template-columns: minmax(200px, 280px) 1fr;
-    gap: 56px;
+    gap: clamp(40px, 5vw, 56px);
     align-items: center;
-    padding: 64px 48px;
+    padding: clamp(40px, 5vw, 56px) 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
@@ -600,13 +605,9 @@
   .seven-digit {
     font-family: var(--display);
     font-size: clamp(140px, 18vw, 220px);
-    font-weight: 350;
-    letter-spacing: -0.05em;
-    color: var(--ink);
-    background: linear-gradient(180deg, var(--ink) 0%, var(--accent-deep) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 450;
+    letter-spacing: -0.02em;
+    color: var(--accent-deep);
   }
   .seven-label {
     font-family: var(--mono);
@@ -662,16 +663,15 @@
 
     /* ─── DINA NOTE WITH PHOTO ─── */
   .dina-note {
-    margin-top: 64px;
+    margin-top: 48px;
     display: grid;
     grid-template-columns: 360px 1fr;
     gap: 48px;
     align-items: center;
     padding: 40px;
-    background: linear-gradient(135deg, #FAFAF7 0%, var(--accent-soft) 100%);
+    background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 24px;
-    box-shadow: var(--shadow-rest);
     position: relative;
     overflow: hidden;
   }
@@ -690,7 +690,6 @@
     aspect-ratio: 6/5;
     width: 100%;
     align-self: center;
-    box-shadow: 0 12px 40px rgba(0, 122, 90, 0.15);
   }
   .dina-photo img {
     width: 100%;
@@ -736,16 +735,6 @@
     justify-content: center;
     position: relative;
   }
-  .dina-quote-mark {
-    font-family: var(--display);
-    font-size: 96px;
-    font-weight: 350;
-    line-height: 0.6;
-    color: var(--accent);
-    opacity: 0.25;
-    margin-bottom: 8px;
-    user-select: none;
-  }
   .dina-text p {
     font-size: 17px;
     line-height: 1.65;
@@ -760,11 +749,10 @@
   }
   .dina-signature {
     font-family: var(--display);
-    font-size: 36px;
-    font-weight: 400;
-    font-style: italic;
+    font-size: 34px;
+    font-weight: 550;
     color: var(--accent-deep);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     line-height: 1;
   }
   .dina-role {
@@ -780,79 +768,70 @@
   /* ─── SERVICES ─── */
   .services-head {
     max-width: 760px;
-    margin-bottom: 64px;
+    margin-bottom: 48px;
   }
   .services-head .lede { margin-top: 24px; }
 
+  /* Rangées éditoriales sur filets — fini la grille de six cards identiques */
   .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  @media (max-width: 980px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .services-grid { grid-template-columns: 1fr; }
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--line);
   }
   .service {
-    position: relative;
-    padding: 32px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    box-shadow: var(--shadow-rest);
-    transition: all .35s var(--ease-out);
-    overflow: hidden;
-  }
-  .service:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-    border-color: var(--ink);
-  }
-  .service .num {
-    display: block;
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--muted);
-    letter-spacing: 0.14em;
-    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: clamp(32px, 5vw, 80px);
+    padding: clamp(28px, 4vw, 44px) 0;
+    border-bottom: 1px solid var(--line);
+    transition: background .3s var(--ease-out);
   }
   .service .icon {
-    width: 32px; height: 32px;
+    grid-column: 1;
+    grid-row: 1;
+    width: 26px; height: 26px;
     color: var(--accent-deep);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
   .service h3 {
+    grid-column: 1;
+    grid-row: 2;
     font-family: var(--display);
-    font-size: 22px;
+    font-size: clamp(21px, 2.2vw, 26px);
     font-weight: 500;
-    letter-spacing: -0.015em;
-    margin: 0 0 12px;
+    letter-spacing: -0.008em;
+    line-height: 1.2;
+    margin: 0;
+    padding-right: 8px;
   }
   .service h3 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--accent-deep);
-    font-weight: 400;
+    font-weight: 600;
   }
   .service p {
+    grid-column: 2;
+    grid-row: 1 / 3;
     color: var(--ink-soft);
-    font-size: 15px;
-    line-height: 1.55;
-    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+    max-width: 62ch;
   }
   .service ul {
+    grid-column: 2;
+    grid-row: 3;
     list-style: none;
     padding: 0;
     margin: 0;
-    border-top: 1px solid var(--line);
-    padding-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
   }
   .service li {
     font-size: 14px;
     color: var(--ink-soft);
-    padding: 6px 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -862,16 +841,19 @@
     width: 14px; height: 1px;
     background: var(--accent);
   }
+  @media (max-width: 760px) {
+    .service { display: block; }
+    .service .icon { margin-bottom: 12px; }
+    .service h3 { max-width: none; margin-bottom: 10px; }
+    .service p { margin-bottom: 14px; }
+  }
 
   /* ─── DASHBOARDS ─── */
   .dash-section { background: var(--bg-dark); color: #fff; }
-  .dash-section .sec-tag {
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.7);
-  }
+  .dash-section .sec-tag { color: #fff; }
+  .dash-section .sec-tag::after { background: rgba(255,255,255,0.14); }
   .dash-section .h2 { color: #fff; }
-  .dash-section .h2 em.italic-acc { color: rgba(255,255,255,0.7); }
+  .dash-section .h2 em.italic-acc { color: var(--accent-glow); }
   .dash-section .sec-intro {
     color: rgba(255,255,255,0.65);
     font-size: 17px;
@@ -1084,7 +1066,7 @@
   }
 
   /* ─── ÉTUDES DE CAS · CAPTURES KLAVIYO ─── */
-  .cs { margin-top: 96px; }
+  .cs { margin-top: 72px; }
   .cs:first-of-type { margin-top: 0; }
 
   .cs-head {
@@ -1222,10 +1204,14 @@
     padding: 10px 13px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .cs-shot-bar span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); }
-  .cs-shot-bar span:first-child { background: #FF605C; }
-  .cs-shot-bar span:nth-child(2) { background: #FFBD44; }
-  .cs-shot-bar span:nth-child(3) { background: #00CA4E; }
+  .cs-src {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
   .cs-when {
     margin-left: auto;
     font-family: var(--mono);
@@ -1305,41 +1291,34 @@
   .testi-head { max-width: 760px; margin-bottom: 56px; }
   .testi-head .lede { margin-top: 24px; }
 
+  /* Citations éditoriales sur filets — fini les cards à ombre portée */
   .testi-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 clamp(40px, 5vw, 80px);
   }
   @media (max-width: 760px) { .testi-grid { grid-template-columns: 1fr; } }
 
   .testi {
-    padding: 36px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    box-shadow: var(--shadow-rest);
-    transition: all .35s var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    padding: 36px 0;
+    border-top: 1px solid var(--ink);
   }
-  .testi:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
 
   .testi .stars {
     display: flex;
     gap: 4px;
     color: var(--accent);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   .testi .result {
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 600;
     color: var(--accent-deep);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 8px 14px;
-    background: var(--accent-soft);
-    border-radius: 9999px;
-    display: inline-block;
-    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
   }
   .testi .result strong {
     color: var(--ink);
@@ -1348,11 +1327,12 @@
   .testi blockquote {
     font-family: var(--display);
     font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 380;
+    font-weight: 400;
     line-height: 1.4;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.008em;
     color: var(--ink);
     margin: 0 0 28px;
+    text-wrap: pretty;
   }
   .testi blockquote::before {
     content: "« ";
@@ -1364,14 +1344,13 @@
   }
   .testi .author {
     display: flex; align-items: center; gap: 14px;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
+    margin-top: auto;
   }
   .testi .avatar {
     width: 44px; height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
-    color: #fff;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--display);
     font-weight: 600;
@@ -1390,47 +1369,66 @@
     color: var(--muted);
   }
 
-  /* ─── CTA ─── */
+  /* ─── CTA — le moment de couleur assumée : vert profond en aplat ─── */
   .cta-section {
-    background: var(--bg-dark);
+    background: var(--accent-deep);
     color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 600px 400px at 80% 20%, rgba(54,244,164,0.12), transparent 60%),
-      radial-gradient(ellipse 500px 300px at 10% 80%, rgba(0,168,126,0.08), transparent 60%);
-    pointer-events: none;
   }
   .cta-wrap {
     max-width: 820px;
-    position: relative;
-    z-index: 1;
   }
   .cta-wrap h2 {
     font-family: var(--display);
     font-size: clamp(36px, 5vw, 64px);
-    font-weight: 350;
-    line-height: 1.05;
-    letter-spacing: -0.025em;
+    font-weight: 450;
+    line-height: 1.06;
+    letter-spacing: -0.012em;
     margin: 0 0 24px;
     color: #fff;
+    text-wrap: balance;
   }
   .cta-wrap h2 em {
-    font-style: italic;
+    font-style: normal;
     color: var(--accent-glow);
-    font-weight: 350;
+    font-weight: 600;
   }
   .cta-wrap p {
     font-size: 18px;
     line-height: 1.55;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.92);
     margin: 0 0 36px;
     max-width: 680px;
+  }
+  .cta-section .btn-outline-light { border-color: rgba(255,255,255,0.55); }
+  .cta-section .btn-outline-light:hover { background: rgba(255,255,255,0.12); }
+
+  /* Calendly embarqué : réserver sans quitter la page */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+  }
+  @media (max-width: 980px) {
+    .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .cta-cal {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0, 40, 30, 0.25);
+  }
+  .cta-cal .calendly-inline-widget { position: relative; }
+  .cta-cal-fallback {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+  .cta-cal.cal-loaded .cta-cal-fallback { display: none; }
+  @media (max-width: 640px) {
+    .cta-cal { border-radius: 16px; }
+    .cta-cal .calendly-inline-widget { height: 620px !important; }
   }
 
   /* ─── FOOTER ─── */
@@ -1501,9 +1499,6 @@
     0%, 100% { box-shadow: 0 12px 32px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.5); }
     50%      { box-shadow: 0 12px 32px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0); }
   }
-  @media (max-width: 600px) {
-    .wa-float { padding: 0 18px 0 16px; height: 54px; font-size: 15px; }
-  }
 
   /* ─── REVEAL — état caché derrière .js : sans JavaScript, la page reste entièrement visible ─── */
   .reveal,
@@ -1562,17 +1557,6 @@
   .reals-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .reals-card:active { transform: translateY(-2px) scale(.995); transition-duration: 120ms; }
 
-  .reals-dots {
-    display: flex;
-    gap: 6px;
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--line-soft);
-  }
-  .reals-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
-  .reals-dots span:first-child { background: #FF605C; }
-  .reals-dots span:nth-child(2) { background: #FFBD44; }
-  .reals-dots span:last-child { background: #00CA4E; }
-
   .reals-img-wrap { position: relative; height: 380px; overflow: hidden; }
   .reals-img-wrap img {
     width: 100%; height: 100%;
@@ -1606,22 +1590,18 @@
   }
   .reals-type {
     flex-shrink: 0;
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 5px 10px;
-    border-radius: 9999px;
-  }
-  .reals-type[data-cat="flow"] { color: var(--accent-deep); background: var(--accent-soft); border: 1px solid rgba(0,168,126,0.15); }
-  .reals-type[data-cat="campagne"] { color: #5B21B6; background: #F3EEFF; border: 1px solid rgba(91,33,182,0.12); }
-  .reals-type[data-cat="evenement"] { color: #B45309; background: #FFF7ED; border: 1px solid rgba(180,83,9,0.12); }
-  .reals-industry {
-    font-family: var(--mono);
+    font-family: var(--display);
     font-size: 12px;
+    font-weight: 550;
+    color: var(--accent-deep);
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    background: var(--bg);
+  }
+  .reals-industry {
+    font-size: 13px;
     color: var(--muted);
-    letter-spacing: 0.04em;
   }
 
   .reals-foot {
@@ -1709,6 +1689,70 @@
     .lb-close { top: -10px; right: -6px; }
   }
 
+  /* ─── OPTIMISATION MOBILE ─── */
+  @media (max-width: 640px) {
+    /* Ligne d'info du hero : une seule ligne */
+    .meta-line {
+      white-space: nowrap;
+      margin-bottom: 24px;
+      font-size: 14px;
+    }
+
+    /* Rythme vertical : marges desktop resserrées */
+    section { padding: 64px 0; }
+    section.tight { padding: 48px 0; }
+    .sec-tag { margin-bottom: 20px; }
+    .hero { padding: 40px 0 56px; }
+    .hero-grid { gap: 36px; margin-bottom: 48px; }
+    .hero h1 { margin-bottom: 20px; }
+    .hero .lede { margin-bottom: 28px; }
+    .week-head { margin-bottom: 40px; }
+    .services-head { margin-bottom: 40px; }
+    .dina-note { margin-top: 40px; }
+    .dash-section .sec-intro { margin: 16px 0 40px; }
+    .cs { margin-top: 64px; }
+    .cs-title { margin-bottom: 28px; }
+    .cs-foot { margin-top: 40px; }
+    .reals-head { margin-bottom: 32px; }
+    .testi-head { margin-bottom: 32px; }
+
+    /* Typo : les tailles fixes desktop redescendent */
+    .display { font-size: 32px; }
+    .h2 { font-size: 29px; }
+    .lede { font-size: 17px; }
+    .seven-digit { font-size: 108px; }
+    .dina-signature { font-size: 30px; }
+    .marquee-item { font-size: 18px; gap: 40px; padding-right: 40px; }
+    .marquee { padding: 16px 0; }
+
+    /* CTAs pleine largeur, plus faciles à taper */
+    .hero-cta .btn,
+    .cta-actions .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Rangées et note : rythme resserré */
+    .testi { padding: 28px 0; }
+    .service { padding: 24px 0; }
+    .dina-note { padding: 22px; }
+
+    /* Le footer respire au-dessus du bouton WhatsApp */
+    footer { padding: 32px 0 96px; }
+  }
+
+  /* WhatsApp float : icône seule sur mobile, ne masque plus le contenu */
+  @media (max-width: 640px) {
+    .wa-float {
+      right: 16px; bottom: 16px;
+      width: 56px; height: 56px;
+      padding: 0;
+      justify-content: center;
+    }
+    .wa-float .wa-label { display: none; }
+    .wa-float svg { width: 28px; height: 28px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -1739,7 +1783,7 @@
       <a href="#resultats">Résultats</a>
       <a href="realisations.html">Réalisations</a>
       <a href="#avis">Avis</a>
-      <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn">
+      <a href="#contact" class="btn">
         Audit gratuit
         <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
       </a>
@@ -1765,8 +1809,6 @@
     <div class="meta-line">
       <span class="live"></span>
       <span>2 places ouvertes ce mois-ci</span>
-      <span class="sep"></span>
-      <span>Klaviyo Manager · Mensuel</span>
     </div>
 
     <div class="hero-grid">
@@ -1780,7 +1822,7 @@
           Alors <strong>je m'en occupe à ta place. Entièrement, chaque mois.</strong> Résultat moyen chez mes clients : <strong>+30% de revenu email en 90 jours.</strong>
         </p>
         <div class="hero-cta">
-          <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn">
+          <a href="#contact" class="btn">
             Réserver un audit gratuit
             <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
           </a>
@@ -1799,7 +1841,7 @@
 
     <div class="hero-foot reveal">
       <div>
-        <div class="num" data-counter="2.4" data-suffix="M+" data-prefix="€" data-decimals="1">€0<em>M+</em></div>
+        <div class="num" data-counter="2.4" data-suffix=" M€+" data-decimals="1">0 <em>M€+</em></div>
         <div class="lbl">Revenus générés</div>
       </div>
       <div>
@@ -1879,7 +1921,6 @@
         </div>
       </div>
       <div class="dina-text">
-        <div class="dina-quote-mark" aria-hidden="true">“</div>
         <p>Je travaille en direct, sans agence et sans intermédiaire. <strong>Maximum 6 marques en simultané</strong>, pour m'occuper de chaque compte comme s'il n'y avait que lui.</p>
         <p>Si tu signes avec moi, c'est moi qui exécute. Pas un junior, pas un sous-traitant. <strong>Sans engagement.</strong> Si ça ne te convient pas, on s'arrête, sans frais.</p>
         <div class="dina-sign">
@@ -1903,9 +1944,8 @@
     <div class="services-grid">
 
       <article class="service">
-        <span class="num">/ 01</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
-        <h3>Ton compte sous <em>surveillance</em></h3>
+        <h3>Ton compte suivi <em>chaque semaine</em></h3>
         <p>Je surveille ton Klaviyo chaque semaine et je corrige avant que ça te coûte : flows qui décrochent, liste qui fatigue, signaux de désengagement. Tu n'as jamais de mauvaise surprise.</p>
         <ul>
           <li>Suivi hebdomadaire</li>
@@ -1916,9 +1956,8 @@
       </article>
 
       <article class="service">
-        <span class="num">/ 02</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6M4.22 4.22l4.24 4.24m7.08 7.08l4.24 4.24M1 12h6m10 0h6M4.22 19.78l4.24-4.24m7.08-7.08l4.24-4.24"/></svg>
-        <h3>Des automatismes qui <em>vendent</em> en continu</h3>
+        <h3>Des flows qui <em>vendent</em> en continu</h3>
         <p>Bienvenue, panier oublié, post-achat, winback. Je crée et j'optimise les séquences qui rapportent en arrière-plan, jour et nuit, sans que tu aies à y penser.</p>
         <ul>
           <li>Tous les flows clés</li>
@@ -1929,9 +1968,8 @@
       </article>
 
       <article class="service">
-        <span class="num">/ 03</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <h3>Un calendrier qui fait <em>acheter</em></h3>
+        <h3>Des campagnes qui <em>convertissent</em></h3>
         <p>8 à 16 campagnes par mois, pensées pour convertir, pas juste pour remplir des boîtes de réception. Rédigées, designées, segmentées et programmées.</p>
         <ul>
           <li>Calendrier éditorial mensuel</li>
@@ -1942,9 +1980,8 @@
       </article>
 
       <article class="service">
-        <span class="num">/ 04</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
-        <h3>Tes gros moments, <em>maximisés</em></h3>
+        <h3>Tes temps forts, <em>rentabilisés</em></h3>
         <p>Black Friday, soldes, lancements produits, anniversaires de marque. Je construis la stratégie pour que tes temps forts rapportent vraiment, au lieu de passer inaperçus.</p>
         <ul>
           <li>Black Friday & soldes</li>
@@ -1955,7 +1992,6 @@
       </article>
 
       <article class="service">
-        <span class="num">/ 05</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>Tes emails en <em>boîte principale</em></h3>
         <p>Réputation d'expéditeur, authentification technique, nettoyage de liste. Tout est suivi pour que tu atterrisses en inbox, pas dans les spams ni l'onglet Promotions.</p>
@@ -1968,7 +2004,6 @@
       </article>
 
       <article class="service">
-        <span class="num">/ 06</span>
         <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18M7 14l4-4 4 4 5-5"/></svg>
         <h3>Tu sais exactement <em>ce que ça rapporte</em></h3>
         <p>Chaque début de mois, un rapport clair : revenu généré, performance des flows, top campagnes, ce qu'on garde et ce qu'on change. Fini les décisions au feeling.</p>
@@ -2021,13 +2056,13 @@
 
         <div class="cs-shots">
           <figure class="cs-shot is-before">
-            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">Janvier · avant</span></div>
+            <div class="cs-shot-bar"><span class="cs-src">Dashboard Klaviyo</span><span class="cs-when">Janvier · avant</span></div>
             <img src="portfolio/resultats-compte1-avant.webp" alt="Tableau de bord Klaviyo, point de départ : 184 275 € de revenu total, 31 846 € attribués à l'email soit 17,3%" loading="lazy" decoding="async" width="1804" height="872" />
             <figcaption class="cs-cap">184 275 € CA · <strong>31 846 € email (17,3%)</strong></figcaption>
           </figure>
           <div class="cs-arrow" aria-hidden="true">&darr;</div>
           <figure class="cs-shot is-after">
-            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">5 mois après</span></div>
+            <div class="cs-shot-bar"><span class="cs-src">Dashboard Klaviyo</span><span class="cs-when">5 mois après</span></div>
             <img src="portfolio/resultats-compte1-apres.webp" alt="Tableau de bord Klaviyo, 5 mois après : 857 342 € de revenu total, 321 987 € attribués à l'email soit 37,6%" loading="lazy" decoding="async" width="1804" height="872" />
             <figcaption class="cs-cap">857 342 € CA · <strong>321 987 € email (37,6%)</strong></figcaption>
           </figure>
@@ -2071,13 +2106,13 @@
 
         <div class="cs-shots">
           <figure class="cs-shot is-before">
-            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">Janvier · avant</span></div>
+            <div class="cs-shot-bar"><span class="cs-src">Dashboard Klaviyo</span><span class="cs-when">Janvier · avant</span></div>
             <img src="portfolio/resultats-compte2-avant.webp" alt="Tableau de bord Klaviyo, point de départ : 8 462 $ de revenu total, 143 $ attribués à l'email soit 1,7%" loading="lazy" decoding="async" width="1804" height="872" />
             <figcaption class="cs-cap">8 462 $ CA · <strong>143 $ email (1,7%)</strong></figcaption>
           </figure>
           <div class="cs-arrow" aria-hidden="true">&darr;</div>
           <figure class="cs-shot is-after">
-            <div class="cs-shot-bar"><span></span><span></span><span></span><span class="cs-when">Après flows core</span></div>
+            <div class="cs-shot-bar"><span class="cs-src">Dashboard Klaviyo</span><span class="cs-when">Après flows core</span></div>
             <img src="portfolio/resultats-compte2-apres.webp" alt="Tableau de bord Klaviyo, après mise en place des flows core : 251 783 $ de revenu total, 41 568 $ attribués à l'email soit 16,5%" loading="lazy" decoding="async" width="1804" height="872" />
             <figcaption class="cs-cap">251 783 $ CA · <strong>41 568 $ email (16,5%)</strong></figcaption>
           </figure>
@@ -2113,7 +2148,6 @@
     <div class="reals-grid">
 
       <a href="realisations.html" class="reals-card reveal" aria-label="Voir l'email Maison Verveine — Bienvenue">
-        <div class="reals-dots"><span></span><span></span><span></span></div>
         <div class="reals-img-wrap">
           <img src="portfolio/verveine-bienvenue.webp" alt="Email Maison Verveine — Bienvenue -15%" loading="lazy" decoding="async" />
         </div>
@@ -2127,7 +2161,6 @@
       </a>
 
       <a href="realisations.html" class="reals-card reveal" aria-label="Voir l'email Onde — Black Friday">
-        <div class="reals-dots"><span></span><span></span><span></span></div>
         <div class="reals-img-wrap">
           <img src="portfolio/onde-blackfriday.webp" alt="Email Onde — Black Friday -30%" loading="lazy" decoding="async" />
         </div>
@@ -2141,7 +2174,6 @@
       </a>
 
       <a href="realisations.html" class="reals-card reveal" aria-label="Voir l'email Cadence Paris — Lancement collection">
-        <div class="reals-dots"><span></span><span></span><span></span></div>
         <div class="reals-img-wrap">
           <img src="portfolio/cadence-collection.webp" alt="Email Cadence Paris — Lancement nouvelle collection" loading="lazy" decoding="async" />
         </div>
@@ -2259,18 +2291,25 @@
 <!-- ============ CTA ============ -->
 <section id="contact" class="cta-section">
   <div class="container">
-    <div class="cta-wrap">
-      <h2>Audit gratuit. <em>30 minutes.</em> Aucun engagement.</h2>
-      <p>On regarde ton Klaviyo ensemble. Je te dis ce qui marche, ce qui ne marche pas, et combien tu laisses sur la table chaque mois. Si on travaille ensemble après, tant mieux. Sinon, tu repars avec 3 actions concrètes. Gratuitement.</p>
-      <div class="cta-actions">
-        <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn btn-light">
-          Réserver mon audit
-          <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
-        </a>
-        <a href="https://wa.me/261349071329?text=Salut%20Dina%20%21%20J%27ai%20vu%20ton%20site%2C%20j%27aimerais%20parler%20de%20mon%20compte%20Klaviyo." target="_blank" rel="noopener" class="btn btn-outline-light">
-          <svg width="16" height="16" aria-hidden="true"><use href="#ic-wa"/></svg>
-          M'écrire sur WhatsApp
-        </a>
+    <div class="cta-grid">
+      <div class="cta-wrap">
+        <h2>Audit gratuit. <em>30 minutes.</em> Aucun engagement.</h2>
+        <p>On regarde ton Klaviyo ensemble. Je te dis ce qui marche, ce qui ne marche pas, et combien tu laisses sur la table chaque mois. Si on travaille ensemble après, tant mieux. Sinon, tu repars avec 3 actions concrètes. Gratuitement.</p>
+        <div class="cta-actions">
+          <a href="https://wa.me/261349071329?text=Salut%20Dina%20%21%20J%27ai%20vu%20ton%20site%2C%20j%27aimerais%20parler%20de%20mon%20compte%20Klaviyo." target="_blank" rel="noopener" class="btn btn-outline-light">
+            <svg width="16" height="16" aria-hidden="true"><use href="#ic-wa"/></svg>
+            M'écrire sur WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="cta-cal">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/dee-razafimahaleo/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=00a87e" style="min-width:320px;height:660px;">
+          <!-- Fallback sans JavaScript : lien direct vers Calendly -->
+          <a href="https://calendly.com/dee-razafimahaleo/30min" target="_blank" rel="noopener" class="btn btn-light cta-cal-fallback">
+            Réserver mon audit
+            <svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#ic-arrow"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -2338,7 +2377,7 @@ const topNav = document.getElementById('topNav');
 window.addEventListener('scroll', () => {
   const scrolled = window.scrollY;
   const total = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-  progressEl.style.setProperty('--p', (scrolled / total * 100) + '%');
+  progressEl.style.setProperty('--p', (scrolled / total).toFixed(4));
   topNav.classList.toggle('scrolled', scrolled > 12);
 }, { passive: true });
 
@@ -2508,6 +2547,27 @@ if (lbTriggers.length) {
     else if (!single && e.key === 'ArrowLeft') go(-1);
     else if (!single && e.key === 'ArrowRight') go(1);
   });
+}
+
+/* Calendly : le script tiers ne se charge que quand la section contact approche */
+const calBox = document.querySelector('.cta-cal');
+if (calBox) {
+  let calLoaded = false;
+  const loadCalendly = () => {
+    if (calLoaded) return;
+    calLoaded = true;
+    const s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.onload = () => calBox.classList.add('cal-loaded');
+    document.body.appendChild(s);
+  };
+  const calIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { loadCalendly(); calIO.disconnect(); }
+    });
+  }, { rootMargin: '800px 0px' });
+  calIO.observe(calBox);
 }
 </script>
 
